@@ -27,7 +27,7 @@ export const QueryHeader = (props: QueryEditorHeaderProps) => {
   return (
     <EditorHeader>
       <InlineSelect
-        label="Query type"
+        label="查询类型"
         options={QUERY_TYPES}
         value={queryType}
         onChange={({ value }) => {

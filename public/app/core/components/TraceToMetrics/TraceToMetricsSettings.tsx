@@ -37,14 +37,14 @@ export function TraceToMetricsSettings({ options, onOptionsChange }: Props) {
 
   return (
     <div className={css({ width: '100%' })}>
-      <h3 className="page-heading">Trace to metrics</h3>
+      <h3 className="page-heading">追踪到度量</h3>
 
       <div className={styles.infoText}>
-        Trace to metrics lets you navigate from a trace span to the selected data source.
+      追踪到指标允许您从跟踪范围导航到选定的数据源。
       </div>
 
       <InlineFieldRow className={styles.row}>
-        <InlineField tooltip="The data source the trace is going to navigate to" label="Data source" labelWidth={26}>
+        <InlineField tooltip="追踪要导航到的数据源" label="数据源" labelWidth={26}>
           <DataSourcePicker
             inputId="trace-to-metrics-data-source-picker"
             pluginId="prometheus"
@@ -78,7 +78,7 @@ export function TraceToMetricsSettings({ options, onOptionsChange }: Props) {
       </InlineFieldRow>
 
       <InlineFieldRow>
-        <InlineField tooltip="Tags that will be used in the metrics query." label="Tags" labelWidth={26}>
+        <InlineField tooltip="将在指标查询中使用的标记。" label="标签" labelWidth={26}>
           <KeyValueInput
             keyPlaceholder="Tag"
             values={options.jsonData.tracesToMetrics?.tags ?? []}
@@ -94,10 +94,10 @@ export function TraceToMetricsSettings({ options, onOptionsChange }: Props) {
 
       <InlineFieldRow>
         <InlineField
-          label="Span start time shift"
+          label="Span 开始时移位"
           labelWidth={26}
           grow
-          tooltip="Shifts the start time of the span. Default 0 (Time units can be used here, for example: 5s, 1m, 3h)"
+          tooltip="转换跨度的开始时间。默认0(这里可以使用时间单位，例如:5s, 1m, 3h)"
         >
           <Input
             type="text"
@@ -116,10 +116,10 @@ export function TraceToMetricsSettings({ options, onOptionsChange }: Props) {
 
       <InlineFieldRow>
         <InlineField
-          label="Span end time shift"
+          label="Span 结束时移位"
           labelWidth={26}
           grow
-          tooltip="Shifts the end time of the span. Default 0 Time units can be used here, for example: 5s, 1m, 3h"
+          tooltip="移位跨度的结束时间。默认0时间单位可以在这里使用，例如:5s, 1m, 3h"
         >
           <Input
             type="text"
@@ -138,9 +138,9 @@ export function TraceToMetricsSettings({ options, onOptionsChange }: Props) {
 
       {options.jsonData.tracesToMetrics?.queries?.map((query, i) => (
         <div key={i} className={styles.queryRow}>
-          <InlineField label="Link Label" labelWidth={10}>
+          <InlineField label="链接标签" labelWidth={10}>
             <Input
-              label="Link Label"
+              label="链接标签"
               type="text"
               allowFullScreen
               value={query.name}
@@ -155,13 +155,13 @@ export function TraceToMetricsSettings({ options, onOptionsChange }: Props) {
             />
           </InlineField>
           <InlineField
-            label="Query"
+            label="查询"
             labelWidth={10}
-            tooltip="The Prometheus query that will run when navigating from a trace to metrics. Interpolate tags using the `$__tags` keyword."
+            tooltip="Prometheus查询将在从跟踪导航到度量时运行。使用' $__tags '关键字插入标签。"
             grow
           >
             <Input
-              label="Query"
+              label="查询"
               type="text"
               allowFullScreen
               value={query.query}
@@ -178,7 +178,7 @@ export function TraceToMetricsSettings({ options, onOptionsChange }: Props) {
 
           <Button
             variant="destructive"
-            title="Remove query"
+            title="删除查询"
             icon="times"
             type="button"
             onClick={() => {
@@ -195,7 +195,7 @@ export function TraceToMetricsSettings({ options, onOptionsChange }: Props) {
 
       <Button
         variant="secondary"
-        title="Add query"
+        title="添加查询"
         icon="plus"
         type="button"
         onClick={() => {
@@ -205,7 +205,7 @@ export function TraceToMetricsSettings({ options, onOptionsChange }: Props) {
           });
         }}
       >
-        Add query
+        添加查询
       </Button>
     </div>
   );

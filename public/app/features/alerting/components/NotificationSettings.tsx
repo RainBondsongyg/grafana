@@ -10,44 +10,43 @@ interface Props extends NotificationSettingsProps {
 
 export const NotificationSettings: FC<Props> = ({ currentFormValues, imageRendererAvailable, register }) => {
   return (
-    <CollapsableSection label="Notification settings" isOpen={false}>
+    <CollapsableSection label="通知设置" isOpen={false}>
       <Field>
-        <Checkbox {...register('isDefault')} label="Default" description="Use this notification for all alerts" />
+        <Checkbox {...register('isDefault')} label="Default" description="将此通知用于所有警报" />
       </Field>
       <Field>
         <Checkbox
           {...register('settings.uploadImage')}
-          label="Include image"
-          description="Captures an image and include it in the notification"
+          label="包括图像"
+          description="捕获图像并将其包含在通知中"
         />
       </Field>
       {currentFormValues.uploadImage && !imageRendererAvailable && (
-        <InfoBox title="No image renderer available/installed">
-          Grafana cannot find an image renderer to capture an image for the notification. Please make sure the Grafana
-          Image Renderer plugin is installed. Please contact your Grafana administrator to install the plugin.
+        <InfoBox title="没有图像渲染器可用/安装">
+          Grafana找不到图像渲染器来为通知捕获图像。请确保Grafana 安装图像渲染插件。请联系您的Grafana管理员安装插件。
         </InfoBox>
       )}
       <Field>
         <Checkbox
           {...register('disableResolveMessage')}
-          label="Disable Resolve Message"
-          description="Disable the resolve message [OK] that is sent when alerting state returns to false"
+          label="禁用解析消息"
+          description="禁用警报状态返回false时发送的解析消息[OK]"
         />
       </Field>
       <Field>
         <Checkbox
           {...register('sendReminder')}
-          label="Send reminders"
-          description="Send additional notifications for triggered alerts"
+          label="发送提醒"
+          description="为触发的警报发送额外通知"
         />
       </Field>
       {currentFormValues.sendReminder && (
         <>
           <Field
-            label="Send reminder every"
-            description="Specify how often reminders should be sent, e.g. every 30s, 1m, 10m, 30m', or 1h etc.
-            Alert reminders are sent after rules are evaluated. A reminder can never be sent more frequently
-            than a configured alert rule evaluation interval."
+            label="每天发送提醒"
+            description="指定提醒应该发送的频率，例如每30分钟、1分钟、10分钟、30分钟或1小时等。
+            在评估规则后发送警报提醒。提醒再频繁不过了
+            小于配置的警报规则评估间隔。"
           >
             <Input {...register('frequency')} width={8} />
           </Field>

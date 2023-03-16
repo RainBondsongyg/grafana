@@ -181,7 +181,7 @@ export function FileDropzone({ options, children, readAs, onLoad, fileListRender
   const getErrorMessages = () => {
     return (
       <div className={styles.errorAlert}>
-        <Alert title="Upload failed" severity="error" onRemove={clearAlert}>
+        <Alert title="上传失败" severity="error" onRemove={clearAlert}>
           {errorMessages.map((error) => {
             return <div key={error}>{error}</div>;
           })}
@@ -238,8 +238,8 @@ export function transformAcceptToNewFormat(accept?: string | string[] | Accept):
 }
 
 export function FileDropzoneDefaultChildren({
-  primaryText = 'Upload file',
-  secondaryText = 'Drag and drop here or browse',
+  primaryText = '上传文件',
+  secondaryText = '拖放这里或浏览',
 }) {
   const theme = useTheme2();
   const styles = getStyles(theme);
@@ -254,23 +254,23 @@ export function FileDropzoneDefaultChildren({
 }
 function getPrimaryText(files: DropzoneFile[], options?: BackwardsCompatibleDropzoneOptions) {
   if (options?.multiple === undefined || options?.multiple) {
-    return 'Upload file';
+    return '上传文件';
   }
-  return files.length ? 'Replace file' : 'Upload file';
+  return files.length ? '替换文件' : '上传文件';
 }
 
 function getAcceptedFileTypeText(accept: string | string[] | Accept) {
   if (isString(accept)) {
-    return `Accepted file type: ${accept}`;
+    return `可接受的文件类型: ${accept}`;
   }
 
   if (Array.isArray(accept)) {
-    return `Accepted file types: ${accept.join(', ')}`;
+    return `可接受的文件类型: ${accept.join(', ')}`;
   }
 
   // react-dropzone has updated the type of the "accept" parameter since v13.0.0:
   // https://github.com/react-dropzone/react-dropzone/blob/master/src/index.js#L95
-  return `Accepted file types: ${Object.values(accept).flat().join(', ')}`;
+  return `可接受的文件类型: ${Object.values(accept).flat().join(', ')}`;
 }
 
 function mapToCustomFile(file: File): DropzoneFile {

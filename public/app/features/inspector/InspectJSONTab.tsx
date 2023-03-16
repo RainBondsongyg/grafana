@@ -25,23 +25,23 @@ enum ShowContent {
 
 const options: Array<SelectableValue<ShowContent>> = [
   {
-    label: t('dashboard.inspect-json.panel-json-label', 'Panel JSON'),
+    label: t('dashboard.inspect-json.panel-json-label', 'JSON 面板'),
     description: t(
       'dashboard.inspect-json.panel-json-description',
-      'The model saved in the dashboard JSON that configures how everything works.'
+      '保存在仪表板JSON中的模型，用于配置所有内容的工作方式。'
     ),
     value: ShowContent.PanelJSON,
   },
   {
-    label: t('dashboard.inspect-json.panel-data-label', 'Panel data'),
-    description: t('dashboard.inspect-json.panel-data-description', 'The raw model passed to the panel visualization'),
+    label: t('dashboard.inspect-json.panel-data-label', '数据面板'),
+    description: t('dashboard.inspect-json.panel-data-description', '原始模型传递给面板可视化'),
     value: ShowContent.PanelData,
   },
   {
-    label: t('dashboard.inspect-json.dataframe-label', 'DataFrame JSON (from Query)'),
+    label: t('dashboard.inspect-json.dataframe-label', 'DataFrame JSON(来自查询)'),
     description: t(
       'dashboard.inspect-json.dataframe-description',
-      'Raw data without transformations and field config applied. '
+      '未应用转换和字段配置的原始数据。 '
     ),
     value: ShowContent.DataFrames,
   },
@@ -170,7 +170,7 @@ export class InspectJSONTab extends PureComponent<Props, State> {
     return (
       <div className={styles.wrap}>
         <div className={styles.toolbar} aria-label={selectors.components.PanelInspector.Json.content}>
-          <Field label={t('dashboard.inspect-json.select-source', 'Select source')} className="flex-grow-1">
+          <Field label={t('dashboard.inspect-json.select-source', '选择源')} className="flex-grow-1">
             <Select
               inputId="select-source-dropdown"
               options={jsonOptions}
@@ -180,12 +180,12 @@ export class InspectJSONTab extends PureComponent<Props, State> {
           </Field>
           {this.hasPanelJSON && isPanelJSON && canEdit && (
             <Button className={styles.toolbarItem} onClick={this.onApplyPanelModel}>
-              Apply
+              应用
             </Button>
           )}
           {show === ShowContent.DataFrames && (
             <Button className={styles.toolbarItem} onClick={this.onShowHelpWizard}>
-              Support
+              支持
             </Button>
           )}
         </div>
@@ -219,7 +219,7 @@ function getPrettyJSON(obj: any): string {
       e instanceof Error &&
       (e.toString().includes('RangeError') || e.toString().includes('allocation size overflow'))
     ) {
-      appEvents.emit(AppEvents.alertError, [e.toString(), 'Cannot display JSON, the object is too big.']);
+      appEvents.emit(AppEvents.alertError, [e.toString(), '无法显示JSON，对象太大。']);
     } else {
       appEvents.emit(AppEvents.alertError, [e instanceof Error ? e.toString() : e]);
     }

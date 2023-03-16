@@ -13,9 +13,9 @@ import { useExternalDataSourceAlertmanagers } from '../../hooks/useExternalAmSel
 import { ExternalAlertmanagerDataSources } from './ExternalAlertmanagerDataSources';
 
 const alertmanagerChoices: Array<SelectableValue<AlertmanagerChoice>> = [
-  { value: AlertmanagerChoice.Internal, label: 'Only Internal' },
-  { value: AlertmanagerChoice.External, label: 'Only External' },
-  { value: AlertmanagerChoice.All, label: 'Both internal and external' },
+  { value: AlertmanagerChoice.Internal, label: '仅内部' },
+  { value: AlertmanagerChoice.External, label: '仅外部' },
+  { value: AlertmanagerChoice.All, label: '内部和外部' },
 ];
 
 export const ExternalAlertmanagers = () => {
@@ -48,19 +48,19 @@ export const ExternalAlertmanagers = () => {
 
   return (
     <div>
-      <h4>External Alertmanagers</h4>
-      <Alert title="External Alertmanager changes" severity="info">
-        The way you configure external Alertmanagers has changed.
+      <h4>外部 Alertmanagers</h4>
+      <Alert title="外部 Alertmanager 更改" severity="info">
+        配置外部 Alertmanagers 的方式已经改变
         <br />
-        You can now use configured Alertmanager data sources as receivers of your Grafana-managed alerts.
+        您现在可以使用配置的 Alertmanager 数据源作为 grafana 管理的警报的接收器。
         <br />
-        For more information, refer to our documentation.
+        有关更多信息，请参阅我们的文档。
       </Alert>
 
       <div className={styles.amChoice}>
         <Field
-          label="Send alerts to"
-          description="Configures how the Grafana alert rule evaluation engine Alertmanager handles your alerts. Internal (Grafana built-in Alertmanager), External (All Alertmanagers configured below), or both."
+          label="发送警报"
+          description="配置 Grafana 警报规则评估引擎 Alertmanager 处理警报的方式。内部的(Grafana 内置的 Alertmanager)，外部的(下面配置的所有 Alertmanager)，或者两者都有。"
         >
           <RadioButtonGroup
             options={alertmanagerChoices}

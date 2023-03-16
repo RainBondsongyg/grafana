@@ -28,12 +28,12 @@ export const CloudEvaluationBehavior = () => {
   }
 
   return (
-    <RuleEditorSection stepNo={2} title="Alert evaluation behavior">
-      <Field label="For" description="Expression has to be true for this long for the alert to be fired.">
+    <RuleEditorSection stepNo={2} title="警报评估行为">
+      <Field label="For" description="表达式必须在这么长的时间内为真，才会触发警报。">
         <div className={styles.flexRow}>
           <Field invalid={!!errors.forTime?.message} error={errors.forTime?.message} className={styles.inlineField}>
             <Input
-              {...register('forTime', { pattern: { value: /^\d+$/, message: 'Must be a positive integer.' } })}
+              {...register('forTime', { pattern: { value: /^\d+$/, message: '必须是正整数。' } })}
               width={8}
             />
           </Field>

@@ -58,7 +58,7 @@ export function SecondaryActions(props: Props) {
           onClick={props.onClickQueryInspectorButton}
           icon="info-circle"
         >
-          检查员
+          检查器
         </Button>
       </HorizontalGroup>
     </div>

@@ -80,7 +80,7 @@ export const TemplateForm: FC<Props> = ({ existing, alertManagerSourceName, conf
         alertManagerSourceName,
         newConfig,
         oldConfig: config,
-        successMessage: 'Template saved.',
+        successMessage: '模板保存。',
         redirectPath: '/alerting/notifications',
       })
     );
@@ -100,26 +100,26 @@ export const TemplateForm: FC<Props> = ({ existing, alertManagerSourceName, conf
   const validateNameIsUnique: Validate<string> = (name: string) => {
     return !config.template_files[name] || existing?.name === name
       ? true
-      : 'Another template with this name already exists.';
+      : '已经存在另一个具有此名称的模板。';
   };
 
   return (
     <form onSubmit={handleSubmit(submit)}>
-      <h4>{existing ? 'Edit message template' : 'Create message template'}</h4>
+      <h4>{existing ? '编辑消息模板' : '创建消息模板'}</h4>
       {error && (
-        <Alert severity="error" title="Error saving template">
+        <Alert severity="error" title="错误保存模板">
           {error.message || (error as any)?.data?.message || String(error)}
         </Alert>
       )}
       {provenance && <ProvisioningAlert resource={ProvisionedResource.Template} />}
       <FieldSet disabled={Boolean(provenance)}>
-        <Field label="Template name" error={errors?.name?.message} invalid={!!errors.name?.message} required>
+        <Field label="模版名称" error={errors?.name?.message} invalid={!!errors.name?.message} required>
           <Input
             {...register('name', {
-              required: { value: true, message: 'Required.' },
+              required: { value: true, message: '必填.' },
               validate: { nameIsUnique: validateNameIsUnique },
             })}
-            placeholder="Give your template a name"
+            placeholder="给模板起一个名字"
             width={42}
             autoFocus={true}
           />
@@ -127,7 +127,7 @@ export const TemplateForm: FC<Props> = ({ existing, alertManagerSourceName, conf
         <TemplatingGuideline />
         <div className={styles.contentContainer}>
           <div>
-            <Field label="Content" error={errors?.content?.message} invalid={!!errors.content?.message} required>
+            <Field label="内容" error={errors?.content?.message} invalid={!!errors.content?.message} required>
               <div className={styles.editWrapper}>
                 <AutoSizer>
                   {({ width, height }) => (
@@ -144,12 +144,12 @@ export const TemplateForm: FC<Props> = ({ existing, alertManagerSourceName, conf
             <div className={styles.buttons}>
               {loading && (
                 <Button disabled={true} icon="fa fa-spinner" variant="primary">
-                  Saving...
+                 拯救……
                 </Button>
               )}
               {!loading && (
                 <Button type="submit" variant="primary">
-                  Save template
+                  保存模版
                 </Button>
               )}
               <LinkButton
@@ -159,7 +159,7 @@ export const TemplateForm: FC<Props> = ({ existing, alertManagerSourceName, conf
                 type="button"
                 fill="outline"
               >
-                Cancel
+                取消
               </LinkButton>
             </div>
           </div>
@@ -174,12 +174,12 @@ function TemplatingGuideline() {
   const styles = useStyles2(getStyles);
 
   return (
-    <Alert title="Templating guideline" severity="info">
+    <Alert title="模板指导" severity="info">
       <Stack direction="row">
         <div>
-          Grafana uses Go templating language to create notification messages.
+          Grafana使用Go模板语言创建通知消息。
           <br />
-          To find out more about templating please visit our documentation.
+          要了解更多关于模板的信息，请访问我们的文档。
         </div>
         <div>
           <LinkButton
@@ -187,13 +187,13 @@ function TemplatingGuideline() {
             target="_blank"
             icon="external-link-alt"
           >
-            Templating documentation
+            模板文档
           </LinkButton>
         </div>
       </Stack>
 
       <div className={styles.snippets}>
-        To make templating easier, we provide a few snippets in the content editor to help you speed up your workflow.
+      为了使模板制作更容易，我们在内容编辑器中提供了一些代码片段来帮助您加快工作流程。
         <div className={styles.code}>
           {Object.values(snippets)
             .map((s) => s.label)

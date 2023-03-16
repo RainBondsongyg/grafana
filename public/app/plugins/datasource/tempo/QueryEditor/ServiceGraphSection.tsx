@@ -51,14 +51,13 @@ export function ServiceGraphSection({
   const ds = dsState.value as PrometheusDatasource;
 
   if (!graphDatasourceUid) {
-    return <div className="text-warning">Please set up a service graph datasource in the datasource settings.</div>;
+    return <div className="text-warning">请在数据源设置中设置服务图数据源。</div>;
   }
 
   if (graphDatasourceUid && !ds) {
     return (
       <div className="text-warning">
-        Service graph datasource is configured but the data source no longer exists. Please configure existing data
-        source to use the service graph functionality.
+        已配置业务图数据源，但数据源已不存在。请配置现有数据源来使用服务图功能。
       </div>
     );
   }
@@ -67,7 +66,7 @@ export function ServiceGraphSection({
   return (
     <div>
       <InlineFieldRow>
-        <InlineField label="Filter" labelWidth={14} grow>
+        <InlineField label="过滤器" labelWidth={14} grow>
           <AdHocFilter
             datasource={{ uid: graphDatasourceUid }}
             filters={filters}
@@ -96,14 +95,14 @@ export function ServiceGraphSection({
         </InlineField>
       </InlineFieldRow>
       {hasKeys === false ? (
-        <Alert title="No service graph data found" severity="info" className={styles.alert}>
-          Please ensure that service graph metrics are set up correctly according to the{' '}
+        <Alert title="没有发现服务图数据" severity="info" className={styles.alert}>
+          请确保服务图指标根据{' '}
           <a
             target="_blank"
             rel="noreferrer noopener"
             href="https://grafana.com/docs/tempo/next/grafana-agent/service-graphs/"
           >
-            Tempo documentation
+            Tempo 文档
           </a>
           .
         </Alert>

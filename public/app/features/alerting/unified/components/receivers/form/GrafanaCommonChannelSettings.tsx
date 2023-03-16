@@ -16,8 +16,8 @@ export const GrafanaCommonChannelSettings: FC<CommonSettingsComponentProps> = ({
       <Field>
         <Checkbox
           {...register(`${pathPrefix}disableResolveMessage`)}
-          label="Disable resolved message"
-          description="Disable the resolve message [OK] that is sent when alerting state returns to false"
+          label="禁用解析消息"
+          description="禁用警报状态返回false时发送的解析消息[OK]"
           disabled={readOnly}
         />
       </Field>

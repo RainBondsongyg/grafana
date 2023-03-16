@@ -29,7 +29,7 @@ export const AmRootRouteRead: FC<AmRootRouteReadProps> = ({ routes }) => {
       <div className={styles.valueCell} data-testid="am-routes-root-receiver">
         {receiver}
       </div>
-      <div className={styles.titleCell}>集团</div>
+      <div className={styles.titleCell}>组</div>
       <div className={styles.valueCell} data-testid="am-routes-root-group-by">
         {groupBy}
       </div>

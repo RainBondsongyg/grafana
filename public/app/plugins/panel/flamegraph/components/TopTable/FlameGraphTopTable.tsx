@@ -170,7 +170,7 @@ const FlameGraphTopTable = ({
         </CustomScrollbar>
       ) : (
         <div style={{ height: height }} className={styles.noData}>
-          No data
+          暂无数据
         </div>
       )}
     </div>

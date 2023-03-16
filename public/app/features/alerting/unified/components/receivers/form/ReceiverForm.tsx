@@ -79,7 +79,7 @@ export function ReceiverForm<R extends ChannelValues>({
   const validateNameIsAvailable: Validate<string> = useCallback(
     (name: string) =>
       takenReceiverNames.map((name) => name.trim().toLowerCase()).includes(name.trim().toLowerCase())
-        ? 'Another receiver with this name already exists.'
+        ? '已经存在另一个此名称的接收者。'
         : true,
     [takenReceiverNames]
   );
@@ -92,30 +92,30 @@ export function ReceiverForm<R extends ChannelValues>({
   };
 
   const onInvalid = () => {
-    notifyApp.error('There are errors in the form. Please correct them and try again!');
+    notifyApp.error('表格上有错误。请改正并重试!');
   };
 
   return (
     <FormProvider {...formAPI}>
       {!config.alertmanager_config.route && (
-        <Alert severity="warning" title="Attention">
-          Because there is no default policy configured yet, this contact point will automatically be set as default.
+        <Alert severity="warning" title="注意">
+          因为还没有配置默认策略，所以这个接触点将自动设置为默认。
         </Alert>
       )}
       <form onSubmit={handleSubmit(submitCallback, onInvalid)}>
         <h4 className={styles.heading}>
-          {!isEditable ? 'Contact point' : initialValues ? 'Update contact point' : 'Create contact point'}
+          {!isEditable ? '联络点' : initialValues ? '更新联络点' : '创建联络点'}
         </h4>
-        <Field label="Name" invalid={!!errors.name} error={errors.name && errors.name.message} required>
+        <Field label="名称" invalid={!!errors.name} error={errors.name && errors.name.message} required>
           <Input
             readOnly={!isEditable}
             id="name"
             {...register('name', {
-              required: 'Name is required',
+              required: '名称必填',
               validate: { nameIsAvailable: validateNameIsAvailable },
             })}
             width={39}
-            placeholder="Name"
+            placeholder="名称"
           />
         </Field>
         {fields.map((field, index) => {
@@ -159,7 +159,7 @@ export function ReceiverForm<R extends ChannelValues>({
               variant="secondary"
               onClick={() => append({ ...defaultItem, __id: String(Math.random()) } as R)}
             >
-              New contact point type
+              新建联络点类型
             </Button>
           )}
           <div className={styles.buttons}>
@@ -167,10 +167,10 @@ export function ReceiverForm<R extends ChannelValues>({
               <>
                 {loading && (
                   <Button disabled={true} icon="fa fa-spinner" variant="primary">
-                    Saving...
+                    拯救……
                   </Button>
                 )}
-                {!loading && <Button type="submit">Save contact point</Button>}
+                {!loading && <Button type="submit">保存联络点</Button>}
               </>
             )}
             <LinkButton
@@ -180,7 +180,7 @@ export function ReceiverForm<R extends ChannelValues>({
               data-testid="cancel-button"
               href={makeAMLink('alerting/notifications', alertManagerSourceName)}
             >
-              Cancel
+              取消
             </LinkButton>
           </div>
         </>

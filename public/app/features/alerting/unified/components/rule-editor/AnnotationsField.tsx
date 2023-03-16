@@ -28,7 +28,7 @@ const AnnotationsField = () => {
 
   return (
     <>
-      <Label>Summary and annotations</Label>
+      <Label>摘要和注释</Label>
       <div className={styles.flexColumn}>
         {fields.map((annotationField, index) => {
           const isUrl = annotations[index]?.key?.toLocaleLowerCase().endsWith('url');
@@ -90,7 +90,7 @@ const AnnotationsField = () => {
             append({ key: '', value: '' });
           }}
         >
-          Add info
+          添加信息
         </Button>
       </div>
     </>

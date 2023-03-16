@@ -495,7 +495,7 @@ function createEmptyDisplayOptions(extend = {}): GetFieldDisplayValuesOptions {
   return Object.assign(options, {
     data: [
       {
-        name: 'No data',
+        name: '暂无数据',
         fields: [],
         length: 0,
       },

@@ -68,7 +68,7 @@ export const AmRootRouteForm: FC<AmRootRouteFormProps> = ({
             </>
           </Field>
           <Field
-            label="集团"
+            label="zu"
             description="当您收到基于标签的通知时，对警报进行分组。"
             data-testid="am-group-select"
           >
@@ -76,7 +76,7 @@ export const AmRootRouteForm: FC<AmRootRouteFormProps> = ({
             <InputControl
               render={({ field: { onChange, ref, ...field } }) => (
                 <MultiSelect
-                  aria-label="集团"
+                  aria-label="组"
                   {...field}
                   allowCustomValue
                   className={styles.input}

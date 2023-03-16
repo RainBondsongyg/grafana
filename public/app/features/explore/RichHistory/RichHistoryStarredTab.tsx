@@ -127,8 +127,8 @@ export function RichHistoryStarredTab(props: Props) {
                 return { value: ds.name, label: ds.name };
               })}
               value={richHistorySearchFilters.datasourceFilters}
-              placeholder="Filter queries for data sources(s)"
-              aria-label="Filter queries for data sources(s)"
+              placeholder="筛选数据源的查询"
+              aria-label="筛选数据源的查询"
               onChange={(options: SelectableValue[]) => {
                 updateFilters({ datasourceFilters: options.map((option) => option.value) });
               }}
@@ -136,21 +136,21 @@ export function RichHistoryStarredTab(props: Props) {
           )}
           <div className={styles.filterInput}>
             <FilterInput
-              placeholder="Search queries"
+              placeholder="搜索查询"
               value={richHistorySearchFilters.search}
               onChange={(search: string) => updateFilters({ search })}
             />
           </div>
-          <div aria-label="Sort queries" className={styles.sort}>
+          <div aria-label="分类查询" className={styles.sort}>
             <Select
               value={sortOrderOptions.filter((order) => order.value === richHistorySearchFilters.sortOrder)}
               options={sortOrderOptions}
-              placeholder="Sort queries by"
+              placeholder="对查询进行排序"
               onChange={(e: SelectableValue<SortOrder>) => updateFilters({ sortOrder: e.value })}
             />
           </div>
         </div>
-        {loading && <span>Loading results...</span>}
+        {loading && <span>加载结果...</span>}
         {!loading &&
           queries.map((q) => {
             const idx = listOfDatasources.findIndex((d) => d.uid === q.datasourceUid);
@@ -170,7 +170,7 @@ export function RichHistoryStarredTab(props: Props) {
           </div>
         ) : null}
         <div className={styles.footer}>
-          {!config.queryHistoryEnabled ? 'The history is local to your browser and is not shared with others.' : ''}
+          {!config.queryHistoryEnabled ? '历史记录是浏览器本地的，不与他人共享。' : ''}
         </div>
       </div>
     </div>

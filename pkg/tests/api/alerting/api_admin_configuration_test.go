@@ -20,6 +20,7 @@ import (
 	"github.com/grafana/grafana/pkg/services/org"
 	"github.com/grafana/grafana/pkg/services/user"
 	"github.com/grafana/grafana/pkg/tests/testinfra"
+	"github.com/grafana/grafana/pkg/util"
 )
 
 func TestAdminConfiguration_SendingToExternalAlertmanagers(t *testing.T) {
@@ -69,7 +70,7 @@ func TestAdminConfiguration_SendingToExternalAlertmanagers(t *testing.T) {
 		var res map[string]interface{}
 		err = json.Unmarshal(b, &res)
 		require.NoError(t, err)
-		require.Equal(t, "no admin configuration available", res["message"])
+		require.Equal(t, util.Translation("no admin configuration available"), res["message"])
 	}
 
 	// An invalid alertmanager choice should return an error.
@@ -110,7 +111,7 @@ func TestAdminConfiguration_SendingToExternalAlertmanagers(t *testing.T) {
 		var res map[string]interface{}
 		err = json.Unmarshal(b, &res)
 		require.NoError(t, err)
-		require.Equal(t, "At least one Alertmanager must be provided or configured as a datasource that handles alerts to choose this option", res["message"])
+		require.Equal(t, util.Translation("At least one Alertmanager must be provided or configured as a datasource that handles alerts to choose this option"), res["message"])
 	}
 
 	// Add an alertmanager datasource

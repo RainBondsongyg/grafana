@@ -73,17 +73,16 @@ const AlertGroups = () => {
   return (
     <AlertingPageWrapper pageId="groups">
       <AlertGroupFilter groups={results} />
-      {loading && <LoadingPlaceholder text="Loading notifications" />}
+      {loading && <LoadingPlaceholder text="加载通知" />}
       {error && !loading && (
-        <Alert title={'Error loading notifications'} severity={'error'}>
-          {error.message || 'Unknown error'}
+        <Alert title={'加载错误通知'} severity={'error'}>
+          {error.message || '未知的错误'}
         </Alert>
       )}
 
       {grafanaAmDeliveryDisabled && (
-        <Alert title="Grafana alerts are not delivered to Grafana Alertmanager">
-          Grafana is configured to send alerts to external alertmanagers only. No alerts are expected to be available
-          here for the selected Alertmanager.
+        <Alert title="Grafana 警报不会传递到 Grafana Alertmanager">
+          Grafana 被配置为仅向外部警报管理器发送警报。预计不会有警报此处查看所选的 Alertmanager。
         </Alert>
       )}
 
@@ -99,7 +98,7 @@ const AlertGroups = () => {
             </React.Fragment>
           );
         })}
-      {results && !filteredAlertGroups.length && <p>No results.</p>}
+      {results && !filteredAlertGroups.length && <p>没有结果。</p>}
     </AlertingPageWrapper>
   );
 };

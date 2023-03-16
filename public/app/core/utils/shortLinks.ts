@@ -23,8 +23,8 @@ export const createShortLink = memoizeOne(async function (path: string) {
     });
     return shortLink.url;
   } catch (err) {
-    console.error('Error when creating shortened link: ', err);
-    dispatch(notifyApp(createErrorNotification('Error generating shortened link')));
+    console.error('创建缩短链接时出错: ', err);
+    dispatch(notifyApp(createErrorNotification('产生缩短链接的错误')));
   }
 });
 
@@ -32,8 +32,8 @@ export const createAndCopyShortLink = async (path: string) => {
   const shortLink = await createShortLink(path);
   if (shortLink) {
     copyStringToClipboard(shortLink);
-    dispatch(notifyApp(createSuccessNotification('Shortened link copied to clipboard')));
+    dispatch(notifyApp(createSuccessNotification('缩短链接复制到剪贴板')));
   } else {
-    dispatch(notifyApp(createErrorNotification('Error generating shortened link')));
+    dispatch(notifyApp(createErrorNotification('产生缩短链接的错误')));
   }
 };

@@ -69,7 +69,7 @@ export default function AlertmanagerConfig(): JSX.Element {
           newConfig: JSON.parse(values.configJSON),
           oldConfig: config,
           alertManagerSourceName,
-          successMessage: 'Alertmanager configuration updated.',
+          successMessage: '更新 Alertmanager 配置。',
           refetch: true,
         })
       );
@@ -84,13 +84,13 @@ export default function AlertmanagerConfig(): JSX.Element {
         dataSources={alertManagers}
       />
       {loadingError && !loading && (
-        <Alert severity="error" title="Error loading Alertmanager configuration">
-          {loadingError.message || 'Unknown error.'}
+        <Alert severity="error" title="加载 Alertmanager 配置错误">
+          {loadingError.message || '未知的错误。'}
         </Alert>
       )}
       {isDeleting && alertManagerSourceName !== GRAFANA_RULES_SOURCE_NAME && (
-        <Alert severity="info" title="Resetting Alertmanager configuration">
-          It might take a while...
+        <Alert severity="info" title="重置 Alertmanager 配置">
+          这可能需要一段时间……
         </Alert>
       )}
       {alertManagerSourceName && config && (
@@ -100,7 +100,7 @@ export default function AlertmanagerConfig(): JSX.Element {
               {!readOnly && (
                 <Field
                   disabled={loading}
-                  label="Configuration"
+                  label="配置"
                   invalid={!!errors.configJSON}
                   error={errors.configJSON?.message}
                 >
@@ -122,14 +122,14 @@ export default function AlertmanagerConfig(): JSX.Element {
                 </Field>
               )}
               {readOnly && (
-                <Field label="Configuration">
+                <Field label="配置">
                   <pre data-testid="readonly-config">{defaultValues.configJSON}</pre>
                 </Field>
               )}
               {!readOnly && (
                 <HorizontalGroup>
                   <Button type="submit" variant="primary" disabled={loading}>
-                    Save
+                    保存
                   </Button>
                   <Button
                     type="button"
@@ -137,20 +137,20 @@ export default function AlertmanagerConfig(): JSX.Element {
                     variant="destructive"
                     onClick={() => setShowConfirmDeleteAMConfig(true)}
                   >
-                    Reset configuration
+                    重置配置
                   </Button>
                 </HorizontalGroup>
               )}
               {!!showConfirmDeleteAMConfig && (
                 <ConfirmModal
                   isOpen={true}
-                  title="Reset Alertmanager configuration"
-                  body={`Are you sure you want to reset configuration ${
+                  title="重置 Alertmanager 配置"
+                  body={`你确定要重制配置 ${
                     alertManagerSourceName === GRAFANA_RULES_SOURCE_NAME
-                      ? 'for the Grafana Alertmanager'
-                      : `for "${alertManagerSourceName}"`
-                  }? Contact points and notification policies will be reset to their defaults.`}
-                  confirmText="Yes, reset configuration"
+                      ? '用于Grafana Alertmanager'
+                      : `为 "${alertManagerSourceName}"`
+                  }吗? 联络点和通知策略将被重置为默认值。`}
+                  confirmText="是的，重置配置"
                   onConfirm={resetConfig}
                   onDismiss={() => setShowConfirmDeleteAMConfig(false)}
                 />

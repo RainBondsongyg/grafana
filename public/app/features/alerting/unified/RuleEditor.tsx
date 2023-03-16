@@ -19,14 +19,14 @@ type RuleEditorProps = GrafanaRouteComponentProps<{ id?: string }>;
 const defaultPageNav: Partial<NavModelItem> = {
   icon: 'bell',
   id: 'alert-rule-view',
-  breadcrumbs: [{ title: 'Alert rules', url: 'alerting/list' }],
+  breadcrumbs: [{ title: '警报规则', url: 'alerting/list' }],
 };
 
 const getPageNav = (state: 'edit' | 'add') => {
   if (state === 'edit') {
-    return { ...defaultPageNav, id: 'alert-rule-edit', text: 'Edit rule' };
+    return { ...defaultPageNav, id: 'alert-rule-edit', text: '编辑规则' };
   } else if (state === 'add') {
-    return { ...defaultPageNav, id: 'alert-rule-add', text: 'Add rule' };
+    return { ...defaultPageNav, id: 'alert-rule-add', text: '添加规则' };
   }
   return undefined;
 };

@@ -37,7 +37,7 @@ interface Props {
 }
 
 const PRISM_LANGUAGE = 'tempo';
-const durationPlaceholder = 'e.g. 1.2s, 100ms';
+const durationPlaceholder = '例如: e.g. 1.2s, 100ms';
 const plugins = [
   BracesPlugin(),
   SlatePrism({
@@ -176,7 +176,7 @@ const NativeSearch = ({ datasource, query, onChange, onBlur, onRunQuery }: Props
     <>
       <div className={styles.container}>
         <InlineFieldRow>
-          <InlineField label="Service Name" labelWidth={14} grow>
+          <InlineField label="Service 名称" labelWidth={14} grow>
             <Select
               inputId="service"
               options={serviceOptions}
@@ -191,7 +191,7 @@ const NativeSearch = ({ datasource, query, onChange, onBlur, onRunQuery }: Props
                   serviceName: v?.value || undefined,
                 });
               }}
-              placeholder="Select a service"
+              placeholder="选择 Service"
               isClearable
               onKeyDown={onKeyDown}
               aria-label={'select-service-name'}
@@ -200,7 +200,7 @@ const NativeSearch = ({ datasource, query, onChange, onBlur, onRunQuery }: Props
           </InlineField>
         </InlineFieldRow>
         <InlineFieldRow>
-          <InlineField label="Span Name" labelWidth={14} grow>
+          <InlineField label="Span 名称" labelWidth={14} grow>
             <Select
               inputId="spanName"
               options={spanOptions}
@@ -209,7 +209,7 @@ const NativeSearch = ({ datasource, query, onChange, onBlur, onRunQuery }: Props
               }}
               isLoading={isLoading.spanName}
               onChange={onSpanNameChange}
-              placeholder="Select a span"
+              placeholder="选择 Span"
               isClearable
               onKeyDown={onKeyDown}
               aria-label={'select-span-name'}
@@ -218,7 +218,7 @@ const NativeSearch = ({ datasource, query, onChange, onBlur, onRunQuery }: Props
           </InlineField>
         </InlineFieldRow>
         <InlineFieldRow>
-          <InlineField label="Tags" labelWidth={14} grow tooltip="Values should be in logfmt.">
+          <InlineField label="标签" labelWidth={14} grow tooltip="值应该在logfmt中">
             <QueryField
               additionalPlugins={plugins}
               query={query.search}
@@ -234,7 +234,7 @@ const NativeSearch = ({ datasource, query, onChange, onBlur, onRunQuery }: Props
           </InlineField>
         </InlineFieldRow>
         <InlineFieldRow>
-          <InlineField label="Min Duration" invalid={!!inputErrors.minDuration} labelWidth={14} grow>
+          <InlineField label="最小间隔" invalid={!!inputErrors.minDuration} labelWidth={14} grow>
             <Input
               id="minDuration"
               value={query.minDuration || ''}
@@ -258,7 +258,7 @@ const NativeSearch = ({ datasource, query, onChange, onBlur, onRunQuery }: Props
           </InlineField>
         </InlineFieldRow>
         <InlineFieldRow>
-          <InlineField label="Max Duration" invalid={!!inputErrors.maxDuration} labelWidth={14} grow>
+          <InlineField label="最大间隔" invalid={!!inputErrors.maxDuration} labelWidth={14} grow>
             <Input
               id="maxDuration"
               value={query.maxDuration || ''}
@@ -283,16 +283,16 @@ const NativeSearch = ({ datasource, query, onChange, onBlur, onRunQuery }: Props
         </InlineFieldRow>
         <InlineFieldRow>
           <InlineField
-            label="Limit"
+            label="限制"
             invalid={!!inputErrors.limit}
             labelWidth={14}
             grow
-            tooltip="Maximum number of returned results"
+            tooltip="返回结果的最大数目"
           >
             <Input
               id="limit"
               value={query.limit || ''}
-              placeholder={`Default: ${DEFAULT_LIMIT}`}
+              placeholder={`默认: ${DEFAULT_LIMIT}`}
               type="number"
               onChange={(v) => {
                 let limit = v.currentTarget.value ? parseInt(v.currentTarget.value, 10) : undefined;
@@ -313,9 +313,9 @@ const NativeSearch = ({ datasource, query, onChange, onBlur, onRunQuery }: Props
         </InlineFieldRow>
       </div>
       {error ? (
-        <Alert title="Unable to connect to Tempo search" severity="info" className={styles.alert}>
-          Please ensure that Tempo is configured with search enabled. If you would like to hide this tab, you can
-          configure it in the <a href={`/datasources/edit/${datasource.uid}`}>datasource settings</a>.
+        <Alert title="无法连接到Tempo搜索" severity="info" className={styles.alert}>
+          请确保Tempo已配置为启用搜索。如果你想隐藏这个标签，你可以在
+          <a href={`/datasources/edit/${datasource.uid}`}>数据源设置</a>中配置它.
         </Alert>
       ) : null}
     </>

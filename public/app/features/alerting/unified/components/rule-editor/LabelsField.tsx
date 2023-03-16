@@ -89,7 +89,7 @@ const AddButton: FC<{
       append({ key: '', value: '' });
     }}
   >
-    Add label
+    添加标签
   </Button>
 );
 
@@ -142,7 +142,7 @@ const LabelsWithSuggestions: FC<{ dataSourceName: string }> = ({ dataSourceName 
                   >
                     <AlertLabelDropdown
                       {...register(`labels.${index}.key`, {
-                        required: { value: Boolean(labels[index]?.value), message: 'Required.' },
+                        required: { value: Boolean(labels[index]?.value), message: '必填.' },
                       })}
                       defaultValue={field.key ? { label: field.key, value: field.key } : undefined}
                       options={keys}
@@ -162,7 +162,7 @@ const LabelsWithSuggestions: FC<{ dataSourceName: string }> = ({ dataSourceName 
                   >
                     <AlertLabelDropdown
                       {...register(`labels.${index}.value`, {
-                        required: { value: Boolean(labels[index]?.key), message: 'Required.' },
+                        required: { value: Boolean(labels[index]?.key), message: '必填.' },
                       })}
                       defaultValue={field.value ? { label: field.value, value: field.value } : undefined}
                       options={values}
@@ -213,7 +213,7 @@ const LabelsWithoutSuggestions: FC = () => {
               >
                 <Input
                   {...register(`labels.${index}.key`, {
-                    required: { value: !!labels[index]?.value, message: 'Required.' },
+                    required: { value: !!labels[index]?.value, message: '必填' },
                   })}
                   placeholder="key"
                   data-testid={`label-key-${index}`}
@@ -252,12 +252,11 @@ const LabelsField: FC<Props> = ({ className, dataSourceName }) => {
     <div className={cx(className, styles.wrapper)}>
       <Label>
         <Stack gap={0.5}>
-          <span>Custom Labels</span>
+          <span>自定义标签</span>
           <Tooltip
             content={
               <div>
-                The dropdown only displays labels that you have previously used for alerts. Select a label from the
-                dropdown or type in a new one.
+                下拉菜单只显示您以前用于警告的标签。中选择一个标签下拉菜单或输入一个新的。
               </div>
             }
           >

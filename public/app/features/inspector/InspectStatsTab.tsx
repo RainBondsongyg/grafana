@@ -28,24 +28,24 @@ export const InspectStatsTab: React.FC<InspectStatsTabProps> = ({ data, timeZone
 
   if (requestTime > 0) {
     stats.push({
-      displayName: t('dashboard.inspect-stats.request-time', 'Total request time'),
+      displayName: t('dashboard.inspect-stats.request-time', '总请求时间'),
       value: requestTime,
       unit: 'ms',
     });
   }
   if (processingTime > 0) {
     stats.push({
-      displayName: t('dashboard.inspect-stats.processing-time', 'Data processing time'),
+      displayName: t('dashboard.inspect-stats.processing-time', '数据处理时间'),
       value: processingTime,
       unit: 'ms',
     });
   }
   stats.push({
-    displayName: t('dashboard.inspect-stats.queries', 'Number of queries'),
+    displayName: t('dashboard.inspect-stats.queries', '查询数量'),
     value: data.request.targets.length,
   });
   stats.push({
-    displayName: t('dashboard.inspect-stats.rows', 'Total number rows'),
+    displayName: t('dashboard.inspect-stats.rows', '总行数'),
     value: dataRows,
   });
 
@@ -57,8 +57,8 @@ export const InspectStatsTab: React.FC<InspectStatsTabProps> = ({ data, timeZone
     }
   }
 
-  const statsTableName = t('dashboard.inspect-stats.table-title', 'Stats');
-  const dataStatsTableName = t('dashboard.inspect-stats.data-title', 'Data source stats');
+  const statsTableName = t('dashboard.inspect-stats.table-title', '统计数据');
+  const dataStatsTableName = t('dashboard.inspect-stats.data-title', '数据源统计');
 
   return (
     <div aria-label={selectors.components.PanelInspector.Stats.content}>

@@ -44,7 +44,7 @@ export function QueryEditor({ datasource, query, onChange, onRunQuery }: Props) 
                 onChange={onChangeQuery}
                 onRunQuery={onRunQuery}
                 onBlur={() => {}}
-                placeholder={'Enter a Trace ID (run with Shift+Enter)'}
+                placeholder={'输入跟踪ID(使用Shift+Enter运行)'}
                 portalOrigin="jaeger"
               />
             </InlineField>
@@ -57,7 +57,7 @@ export function QueryEditor({ datasource, query, onChange, onRunQuery }: Props) 
     <>
       <div className={styles.container}>
         <InlineFieldRow>
-          <InlineField label="Query type">
+          <InlineField label="查询类型">
             <RadioButtonGroup<JaegerQueryType>
               options={[
                 { value: 'search', label: 'Search' },

@@ -11,6 +11,7 @@ import (
 	"github.com/grafana/grafana/pkg/services/ngalert/api/tooling/definitions"
 	"github.com/grafana/grafana/pkg/services/ngalert/store"
 	"github.com/grafana/grafana/pkg/services/org"
+	"github.com/grafana/grafana/pkg/util"
 	"github.com/stretchr/testify/require"
 )
 
@@ -50,14 +51,14 @@ func TestExternalAlertmanagerChoice(t *testing.T) {
 				},
 			},
 			statusCode: http.StatusBadRequest,
-			message:    "At least one Alertmanager must be provided or configured as a datasource that handles alerts to choose this option",
+			message:    util.Translation("At least one Alertmanager must be provided or configured as a datasource that handles alerts to choose this option"),
 		},
 		{
 			name:               "setting the choice to external and having no am configured should fail",
 			alertmanagerChoice: definitions.ExternalAlertmanagers,
 			datasources:        []*datasources.DataSource{},
 			statusCode:         http.StatusBadRequest,
-			message:            "At least one Alertmanager must be provided or configured as a datasource that handles alerts to choose this option",
+			message:            util.Translation("At least one Alertmanager must be provided or configured as a datasource that handles alerts to choose this option"),
 		},
 		{
 			name:               "setting the choice to all and having no external am configured should succeed",

@@ -20,10 +20,10 @@ export enum Tabs {
 
 export const getSortOrderOptions = () =>
   [
-    { label: 'Newest first', value: SortOrder.Descending },
-    { label: 'Oldest first', value: SortOrder.Ascending },
-    { label: 'Data source A-Z', value: SortOrder.DatasourceAZ },
-    { label: 'Data source Z-A', value: SortOrder.DatasourceZA },
+    { label: '最新', value: SortOrder.Descending },
+    { label: '之前', value: SortOrder.Ascending },
+    { label: '数据源 A-Z', value: SortOrder.DatasourceAZ },
+    { label: '数据源 Z-A', value: SortOrder.DatasourceZA },
   ].filter((option) => supportedFeatures().availableFilters.includes(option.value));
 
 export interface RichHistoryProps extends Themeable2 {
@@ -133,7 +133,7 @@ class UnThemedRichHistory extends PureComponent<RichHistoryProps> {
     };
 
     const StarredTab: TabConfig = {
-      label: '标记',
+      label: '星标',
       value: Tabs.Starred,
       content: (
         <RichHistoryStarredTab
@@ -171,7 +171,7 @@ class UnThemedRichHistory extends PureComponent<RichHistoryProps> {
 
     let tabs = [QueriesTab, StarredTab, SettingsTab];
     return (
-      <TabbedContainer tabs={tabs} onClose={onClose} defaultTab={firstTab} closeIconTooltip="Close query history" />
+      <TabbedContainer tabs={tabs} onClose={onClose} defaultTab={firstTab} closeIconTooltip="关闭查询历史记录" />
     );
   }
 }

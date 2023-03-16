@@ -48,24 +48,24 @@ export const DetailsStep = ({ initialFolder }: DetailsStepProps) => {
     <RuleEditorSection
       stepNo={type === RuleFormType.cloudRecording ? 2 : 3}
       title={
-        type === RuleFormType.cloudRecording ? 'Add details for your recording rule' : 'Add details for your alert'
+        type === RuleFormType.cloudRecording ? '添加记录规则的详细信息' : '为您的警告添加详细信息'
       }
       description={
         type === RuleFormType.cloudRecording
-          ? 'Add labels to help you better manage your rules'
-          : 'Write a summary and add labels to help you better manage your alerts'
+          ? '添加标签可以帮助您更好地管理规则'
+          : '编写摘要并添加标签，以帮助您更好地管理警报'
       }
     >
       <Field
         className={styles.formInput}
-        label="Rule name"
+        label="规则名称"
         error={errors?.name?.message}
         invalid={!!errors.name?.message}
       >
         <Input
           id="name"
           {...register('name', {
-            required: { value: true, message: 'Must enter an alert name' },
+            required: { value: true, message: '必须输入警报名称' },
             pattern: ruleFormType === RuleFormType.cloudRecording ? recordingRuleNameValidationPattern : undefined,
             validate: {
               pathSeparator: (value: string) => {
@@ -88,15 +88,14 @@ export const DetailsStep = ({ initialFolder }: DetailsStepProps) => {
         <div className={classNames([styles.flexRow, styles.alignBaseline])}>
           <Field
             label={
-              <Label htmlFor="folder" description={'Select a folder to store your rule.'}>
+              <Label htmlFor="folder" description={'选择一个文件夹来存储规则。'}>
                 <Stack gap={0.5}>
-                  Folder
+                文件夹
                   <Tooltip
                     placement="top"
                     content={
                       <div>
-                        Each folder has unique folder permission. When you store multiple rules in a folder, the folder
-                        access permissions get assigned to the rules.
+                        每个文件夹具有唯一的文件夹权限。当您在一个文件夹中存储多个规则时，该文件夹访问权限被分配给规则
                       </div>
                     }
                   >
@@ -123,7 +122,7 @@ export const DetailsStep = ({ initialFolder }: DetailsStepProps) => {
               )}
               name="folder"
               rules={{
-                required: { value: true, message: 'Please select a folder' },
+                required: { value: true, message: '请选择一个文件夹' },
                 validate: {
                   pathSeparator: (folder: Folder) => checkForPathSeparator(folder.title),
                 },
@@ -133,7 +132,7 @@ export const DetailsStep = ({ initialFolder }: DetailsStepProps) => {
           <Field
             label="Group"
             data-testid="group-picker"
-            description="Rules within the same group are evaluated after the same time interval."
+            description="同一组中的规则在相同的时间间隔后进行评估。"
             className={styles.formInput}
             error={errors.group?.message}
             invalid={!!errors.group?.message}
@@ -141,7 +140,7 @@ export const DetailsStep = ({ initialFolder }: DetailsStepProps) => {
             <Input
               id="group"
               {...register('group', {
-                required: { value: true, message: 'Must enter a group name' },
+                required: { value: true, message: '必须输入组名' },
                 validate: {
                   pathSeparator: (group_: string) => checkForPathSeparator(group_),
                 },

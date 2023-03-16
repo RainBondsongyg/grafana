@@ -6,11 +6,12 @@ import (
 
 	"github.com/grafana/grafana/pkg/infra/db"
 	ngmodels "github.com/grafana/grafana/pkg/services/ngalert/models"
+	"github.com/grafana/grafana/pkg/util"
 )
 
 var (
 	// ErrNoAdminConfiguration is an error for when no admin configuration is found.
-	ErrNoAdminConfiguration = fmt.Errorf("no admin configuration available")
+	ErrNoAdminConfiguration = fmt.Errorf(util.Translation("no admin configuration available"))
 )
 
 type UpdateAdminConfigurationCmd struct {

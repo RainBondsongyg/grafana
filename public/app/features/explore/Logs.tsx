@@ -448,19 +448,19 @@ class UnthemedLogs extends PureComponent<Props, State> {
               </InlineField>
             </InlineFieldRow>
             <div>
-              <InlineField label="Display results" className={styles.horizontalInlineLabel} transparent>
+              <InlineField label="显示结果" className={styles.horizontalInlineLabel} transparent>
                 <RadioButtonGroup
                   disabled={isFlipping}
                   options={[
                     {
-                      label: 'Newest first',
+                      label: '最新到之前',
                       value: LogsSortOrder.Descending,
-                      description: 'Show results newest to oldest',
+                      description: '显示从最新到最老的结果',
                     },
                     {
-                      label: 'Oldest first',
+                      label: '之前到最新',
                       value: LogsSortOrder.Ascending,
-                      description: 'Show results oldest to newest',
+                      description: '显示从最老到最新的结果',
                     },
                   ]}
                   value={logsSortOrder}
@@ -523,9 +523,9 @@ class UnthemedLogs extends PureComponent<Props, State> {
           </div>
           {!loading && !hasData && !scanning && (
             <div className={styles.noData}>
-              No logs found.
+              没有发现日志。
               <Button size="xs" fill="text" onClick={this.onClickScan}>
-                Scan for older logs
+              扫描旧日志
               </Button>
             </div>
           )}
@@ -533,7 +533,7 @@ class UnthemedLogs extends PureComponent<Props, State> {
             <div className={styles.noData}>
               <span>{scanText}</span>
               <Button size="xs" fill="text" onClick={this.onClickStopScan}>
-                Stop scan
+              停止扫描
               </Button>
             </div>
           )}

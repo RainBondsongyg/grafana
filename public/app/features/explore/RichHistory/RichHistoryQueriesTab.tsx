@@ -203,7 +203,7 @@ export function RichHistoryQueriesTab(props: Props) {
               })}
               value={richHistorySearchFilters.datasourceFilters}
               placeholder="筛选数据源的查询"
-              aria-label="Filter queries for data sources(s)"
+              aria-label="筛选数据源的查询"
               onChange={(options: SelectableValue[]) => {
                 updateFilters({ datasourceFilters: options.map((option) => option.value) });
               }}
@@ -226,7 +226,11 @@ export function RichHistoryQueriesTab(props: Props) {
           </div>
         </div>
 
+<<<<<<< HEAD
         {loading && <span>加载结果……</span>}
+=======
+        {loading && <span>加载结果...</span>}
+>>>>>>> d89e2221940b84293d0261cd153a107cbe3a01a5
 
         {!loading &&
           Object.keys(mappedQueriesToHeadings).map((heading) => {
@@ -236,7 +240,7 @@ export function RichHistoryQueriesTab(props: Props) {
                   {heading}{' '}
                   <span className={styles.queries}>
                     {partialResults ? 'Displaying ' : ''}
-                    {mappedQueriesToHeadings[heading].length} queries
+                    {mappedQueriesToHeadings[heading].length} 查询
                   </span>
                 </div>
                 {mappedQueriesToHeadings[heading].map((q: RichHistoryQuery) => {
@@ -256,7 +260,7 @@ export function RichHistoryQueriesTab(props: Props) {
           })}
         {partialResults ? (
           <div>
-            Showing {queries.length} of {totalQueries} <Button onClick={loadMoreRichHistory}>Load more</Button>
+            显示 {queries.length} {totalQueries} <Button onClick={loadMoreRichHistory}>更多</Button>
           </div>
         ) : null}
         <div className={styles.footer}>

@@ -21,10 +21,10 @@ export const AddToDashboard = ({ exploreId }: Props) => {
       <ToolbarButton
         icon="apps"
         onClick={() => setIsOpen(true)}
-        aria-label="Add to dashboard"
+        aria-label="添加 Dashboard"
         disabled={!explorePaneHasQueries}
       >
-        添加到仪表板
+        添加到仪表盘
       </ToolbarButton>
 
       {isOpen && <AddToDashboardModal onClose={() => setIsOpen(false)} exploreId={exploreId} />}

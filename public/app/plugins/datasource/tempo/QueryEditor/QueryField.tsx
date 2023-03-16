@@ -104,7 +104,7 @@ class TempoQueryFieldComponent extends React.PureComponent<Props> {
     return (
       <>
         <InlineFieldRow>
-          <InlineField label="Query type">
+          <InlineField label="查询类型">
             <RadioButtonGroup<TempoQueryType>
               options={queryTypeOptions}
               value={query.queryType}
@@ -170,7 +170,7 @@ class TempoQueryFieldComponent extends React.PureComponent<Props> {
                 }}
                 onBlur={this.props.onBlur}
                 onRunQuery={this.props.onRunQuery}
-                placeholder={'Enter a Trace ID (run with Shift+Enter)'}
+                placeholder={'输入跟踪ID(使用Shift+Enter运行)'}
                 portalOrigin="tempo"
               />
             </InlineField>

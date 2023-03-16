@@ -22,7 +22,7 @@ export function TemplateDataDocs() {
     <TemplateDataTable
       caption={
         <h4 className={styles.header}>
-          Alert template data <span>Available only when in the context of an Alert (e.g. inside .Alerts loop)</span>
+          Alert模板数据<span>仅在Alert上下文中可用(例如在.Alerts循环中) </span>
         </h4>
       }
       dataItems={AlertTemplateData}
@@ -32,7 +32,7 @@ export function TemplateDataDocs() {
   return (
     <Stack gap={2} flexGrow={1}>
       <TemplateDataTable
-        caption={<h4 className={styles.header}>Template Data</h4>}
+        caption={<h4 className={styles.header}>模板数据</h4>}
         dataItems={GlobalTemplateData}
         typeRenderer={(type) =>
           type === '[]Alert' ? (
@@ -80,9 +80,9 @@ function TemplateDataTable({ dataItems, caption, typeRenderer }: TemplateDataTab
       <caption>{caption}</caption>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Notes</th>
+          <th>名称</th>
+          <th>类型</th>
+          <th>笔记</th>
         </tr>
       </thead>
       <tbody>
@@ -103,18 +103,18 @@ function KeyValueTemplateDataTable() {
 
   return (
     <div>
-      KeyValue is a set of key/value string pairs that represent labels and annotations.
+      KeyValue是一组表示标签和注释的键/值字符串对。
       <pre>
         <code>{KeyValueCodeSnippet}</code>
       </pre>
       <table className={tableStyles.table}>
-        <caption>Key-value methods</caption>
+        <caption>键-值的方法</caption>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Arguments</th>
-            <th>Returns</th>
-            <th>Notes</th>
+            <th>名称</th>
+            <th>参数</th>
+            <th>返回</th>
+            <th>笔记</th>
           </tr>
         </thead>
         <tbody>

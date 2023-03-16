@@ -62,7 +62,7 @@ export const ZipkinQueryField = ({ query, onChange, onRunQuery, datasource }: Pr
   return (
     <>
       <InlineFieldRow>
-        <InlineField label="Query type">
+        <InlineField label="查询类型">
           <RadioButtonGroup<ZipkinQueryType>
             options={[
               { value: 'traceID', label: 'TraceID' },
@@ -105,7 +105,7 @@ export const ZipkinQueryField = ({ query, onChange, onRunQuery, datasource }: Pr
               query={query.query}
               onChange={onChangeQuery}
               onRunQuery={onRunQuery}
-              placeholder={'Insert Trace ID (run with Shift+Enter)'}
+              placeholder={'输入跟踪ID(按Shift+Enter运行)'}
               portalOrigin="zipkin"
             />
           </div>

@@ -26,7 +26,7 @@ export const GroupBy = ({ className, groups, groupBy, onGroupingChange }: Props)
       <MultiSelect
         aria-label={'按标签键分组'}
         value={groupBy}
-        placeholder="集团"
+        placeholder="组"
         prefix={<Icon name={'tag-alt'} />}
         onChange={(items) => {
           onGroupingChange(items.map(({ value }) => value as string));

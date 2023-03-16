@@ -12,7 +12,7 @@ import { JaegerDatasource } from '../datasource';
 import { JaegerQuery } from '../types';
 import { transformToLogfmt } from '../util';
 
-const durationPlaceholder = 'e.g. 1.2s, 100ms, 500us';
+const durationPlaceholder = '例如: e.g. 1.2s, 100ms, 500us';
 
 type Props = {
   datasource: JaegerDatasource;
@@ -96,14 +96,14 @@ export function SearchForm({ datasource, query, onChange }: Props) {
   return (
     <div className={css({ maxWidth: '500px' })}>
       <InlineFieldRow>
-        <InlineField label="Service Name" labelWidth={14} grow>
+        <InlineField label="Service 名称" labelWidth={14} grow>
           <Select
             inputId="service"
             options={serviceOptions}
             onOpenMenu={() => loadOptions('/api/services', 'services')}
             isLoading={isLoading.services}
             value={serviceOptions?.find((v) => v?.value === query.service) || undefined}
-            placeholder="Select a service"
+            placeholder="选择 Service"
             onChange={(v) =>
               onChange({
                 ...query,
@@ -119,7 +119,7 @@ export function SearchForm({ datasource, query, onChange }: Props) {
         </InlineField>
       </InlineFieldRow>
       <InlineFieldRow>
-        <InlineField label="Operation Name" labelWidth={14} grow disabled={!query.service}>
+        <InlineField label="Operation 名称" labelWidth={14} grow disabled={!query.service}>
           <Select
             inputId="operation"
             options={operationOptions}
@@ -131,7 +131,7 @@ export function SearchForm({ datasource, query, onChange }: Props) {
             }
             isLoading={isLoading.operations}
             value={operationOptions?.find((v) => v.value === query.operation) || null}
-            placeholder="Select an operation"
+            placeholder="选择 Operation"
             onChange={(v) =>
               onChange({
                 ...query,
@@ -146,7 +146,7 @@ export function SearchForm({ datasource, query, onChange }: Props) {
         </InlineField>
       </InlineFieldRow>
       <InlineFieldRow>
-        <InlineField label="Tags" labelWidth={14} grow tooltip="Values should be in logfmt.">
+        <InlineField label="标签" labelWidth={14} grow tooltip="值应该在logfmt中。">
           <Input
             id="tags"
             value={transformToLogfmt(query.tags)}
@@ -161,7 +161,7 @@ export function SearchForm({ datasource, query, onChange }: Props) {
         </InlineField>
       </InlineFieldRow>
       <InlineFieldRow>
-        <InlineField label="Min Duration" labelWidth={14} grow>
+        <InlineField label="最小间隔" labelWidth={14} grow>
           <Input
             id="minDuration"
             name="minDuration"
@@ -177,7 +177,7 @@ export function SearchForm({ datasource, query, onChange }: Props) {
         </InlineField>
       </InlineFieldRow>
       <InlineFieldRow>
-        <InlineField label="Max Duration" labelWidth={14} grow>
+        <InlineField label="最大间隔" labelWidth={14} grow>
           <Input
             id="maxDuration"
             name="maxDuration"
@@ -193,7 +193,7 @@ export function SearchForm({ datasource, query, onChange }: Props) {
         </InlineField>
       </InlineFieldRow>
       <InlineFieldRow>
-        <InlineField label="Limit" labelWidth={14} grow tooltip="Maximum number of returned results">
+        <InlineField label="限制" labelWidth={14} grow tooltip="返回结果的最大数目">
           <Input
             id="limit"
             name="limit"

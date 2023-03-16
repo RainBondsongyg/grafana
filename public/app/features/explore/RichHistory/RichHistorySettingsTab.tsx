@@ -43,10 +43,10 @@ const getStyles = (theme: GrafanaTheme2) => {
 };
 
 const retentionPeriodOptions = [
-  { value: 2, label: '2 days' },
-  { value: 5, label: '5 days' },
-  { value: 7, label: '1 week' },
-  { value: 14, label: '2 weeks' },
+  { value: 2, label: '2 天' },
+  { value: 5, label: '5 天' },
+  { value: 7, label: '1 周' },
+  { value: 14, label: '2 周' },
 ];
 
 export function RichHistorySettingsTab(props: RichHistorySettingsProps) {
@@ -65,13 +65,13 @@ export function RichHistorySettingsTab(props: RichHistorySettingsProps) {
   const onDelete = () => {
     appEvents.publish(
       new ShowConfirmModalEvent({
-        title: 'Delete',
-        text: 'Are you sure you want to permanently delete your query history?',
-        yesText: 'Delete',
+        title: '删除',
+        text: '确定要永久删除查询历史记录吗?',
+        yesText: '删除',
         icon: 'trash-alt',
         onConfirm: () => {
           deleteRichHistory();
-          dispatch(notifyApp(createSuccessNotification('Query history deleted')));
+          dispatch(notifyApp(createSuccessNotification('删除历史查询')));
         },
       })
     );
@@ -81,20 +81,20 @@ export function RichHistorySettingsTab(props: RichHistorySettingsProps) {
     <div className={styles.container}>
       {supportedFeatures().changeRetention ? (
         <Field
-          label="History time span"
-          description={`Select the period of time for which Grafana will save your query history. Up to ${MAX_HISTORY_ITEMS} entries will be stored.`}
+          label="历史时间跨度"
+          description={`选择Grafana将保存查询历史记录的时间段。 最多${MAX_HISTORY_ITEMS}项将被存储`}
         >
           <div className={styles.input}>
             <Select value={selectedOption} options={retentionPeriodOptions} onChange={onChangeRetentionPeriod}></Select>
           </div>
         </Field>
       ) : (
-        <Alert severity="info" title="History time span">
-          Grafana will keep entries up to {selectedOption?.label}.
+        <Alert severity="info" title="历史时间跨度">
+          Grafana将保留参赛作品 {selectedOption?.label}.
         </Alert>
       )}
       <InlineField
-        label="Change the default active tab from “Query history” to “Starred”"
+        label="将默认的活动选项卡从“查询历史”更改为“带星”"
         className={styles.spaceBetween}
       >
         <InlineSwitch
@@ -105,7 +105,7 @@ export function RichHistorySettingsTab(props: RichHistorySettingsProps) {
       </InlineField>
       {supportedFeatures().onlyActiveDataSource && (
         <InlineField
-          label="Only show queries for data source currently active in Explore"
+          label="仅显示当前在Explore中活动的数据源的查询"
           className={styles.spaceBetween}
         >
           <InlineSwitch
@@ -117,10 +117,10 @@ export function RichHistorySettingsTab(props: RichHistorySettingsProps) {
       )}
       {supportedFeatures().clearHistory && (
         <div>
-          <div className={styles.bold}>Clear query history</div>
-          <div className={styles.bottomMargin}>Delete all of your query history, permanently.</div>
+          <div className={styles.bold}>清楚查询历史</div>
+          <div className={styles.bottomMargin}>永久删除所有查询历史记录。</div>
           <Button variant="destructive" onClick={onDelete}>
-            Clear query history
+            清楚查询历史
           </Button>
         </div>
       )}

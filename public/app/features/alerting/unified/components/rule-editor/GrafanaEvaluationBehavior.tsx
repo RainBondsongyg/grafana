@@ -91,18 +91,18 @@ export const GrafanaEvaluationBehavior = () => {
 
   return (
     // TODO remove "and alert condition" for recording rules
-    <RuleEditorSection stepNo={2} title="Alert evaluation behavior">
+    <RuleEditorSection stepNo={2} title="警报评估行为">
       <Field
-        label="Evaluate"
-        description="Evaluation interval applies to every rule within a group. It can overwrite the interval of an existing alert rule."
+        label="评估"
+        description="评估区间适用于组内的每条规则。它可以覆盖现有警报规则的时间间隔。"
       >
         <div className={styles.flexRow}>
           <InlineLabel
             htmlFor={evaluateEveryId}
             width={16}
-            tooltip="How often the alert will be evaluated to see if it fires"
+            tooltip="多久评估一次警报，看看它是否触发"
           >
-            Evaluate every
+            评估每一个
           </InlineLabel>
           <Field
             className={styles.inlineField}
@@ -116,7 +116,7 @@ export const GrafanaEvaluationBehavior = () => {
           <InlineLabel
             htmlFor={evaluateForId}
             width={7}
-            tooltip='Once condition is breached, alert will go into pending state. If it is pending for longer than the "for" value, it will become a firing alert.'
+            tooltip='一旦条件被打破，警报将进入待定状态。如果它等待的时间超过了“for”值，它将成为一个触发警报。'
           >
             for
           </InlineLabel>
@@ -138,12 +138,12 @@ export const GrafanaEvaluationBehavior = () => {
       <CollapseToggle
         isCollapsed={!showErrorHandling}
         onToggle={(collapsed) => setShowErrorHandling(!collapsed)}
-        text="Configure no data and error handling"
+        text="配置无数据和错误处理"
         className={styles.collapseToggle}
       />
       {showErrorHandling && (
         <>
-          <Field htmlFor="no-data-state-input" label="Alert state if no data or all values are null">
+          <Field htmlFor="no-data-state-input" label="如果没有数据或所有值都为空，则为警报状态">
             <InputControl
               render={({ field: { onChange, ref, ...field } }) => (
                 <GrafanaAlertStatePicker
@@ -158,7 +158,7 @@ export const GrafanaEvaluationBehavior = () => {
               name="noDataState"
             />
           </Field>
-          <Field htmlFor="exec-err-state-input" label="Alert state if execution error or timeout">
+          <Field htmlFor="exec-err-state-input" label="执行错误或超时时的警报状态">
             <InputControl
               render={({ field: { onChange, ref, ...field } }) => (
                 <GrafanaAlertStatePicker
