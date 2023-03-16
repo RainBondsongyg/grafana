@@ -226,11 +226,7 @@ export function RichHistoryQueriesTab(props: Props) {
           </div>
         </div>
 
-<<<<<<< HEAD
-        {loading && <span>加载结果……</span>}
-=======
         {loading && <span>加载结果...</span>}
->>>>>>> d89e2221940b84293d0261cd153a107cbe3a01a5
 
         {!loading &&
           Object.keys(mappedQueriesToHeadings).map((heading) => {
