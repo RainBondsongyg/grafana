@@ -59,7 +59,7 @@ export const TimeZonePicker = (props: Props) => {
     <Select
       inputId={inputId}
       value={selected}
-      placeholder={t('time-picker.zone.select-search-input', 'Type to search (country, city, abbreviation)')}
+      placeholder={t('time-picker.zone.select-search-input', '要搜索的类型(国家、城市、缩写)')}
       autoFocus={autoFocus}
       menuShouldPortal={false}
       openMenuOnFocus={true}

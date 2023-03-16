@@ -10,7 +10,7 @@ import { lokiQueryModeller } from '../LokiQueryModeller';
 import { buildVisualQueryFromString } from '../parsing';
 import { LokiVisualQuery } from '../types';
 
-export const EXPLAIN_LABEL_FILTER_CONTENT = 'Fetch all log lines matching label filters.';
+export const EXPLAIN_LABEL_FILTER_CONTENT = '获取所有匹配标签过滤器的日志行。';
 
 export interface Props {
   query: string;

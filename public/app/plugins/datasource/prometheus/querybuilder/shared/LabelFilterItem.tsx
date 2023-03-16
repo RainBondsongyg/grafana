@@ -62,7 +62,7 @@ export function LabelFilterItem({
     <div data-testid="prometheus-dimensions-filter-item">
       <InputGroup>
         <Select
-          placeholder="Select label"
+          placeholder="选择标签"
           aria-label={selectors.components.QueryBuilder.labelSelect}
           inputId="prometheus-dimensions-filter-item-key"
           width="auto"
@@ -104,7 +104,7 @@ export function LabelFilterItem({
         />
 
         <Select
-          placeholder="Select value"
+          placeholder="选择值"
           aria-label={selectors.components.QueryBuilder.valueSelect}
           inputId="prometheus-dimensions-filter-item-value"
           width="auto"

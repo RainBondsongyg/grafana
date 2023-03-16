@@ -73,7 +73,7 @@ export const TimePickerFooter: FC<Props> = (props) => {
         </div>
         <div className={style.spacer} />
         <Button variant="secondary" onClick={onToggleChangeTimeSettings} size="sm">
-          <Trans i18nKey="time-picker.footer.change-settings-button">Change time settings</Trans>
+          <Trans i18nKey="time-picker.footer.change-settings-button">更改时间设置</Trans>
         </Button>
       </section>
       {isEditing ? (
@@ -82,8 +82,8 @@ export const TimePickerFooter: FC<Props> = (props) => {
             <RadioButtonGroup
               value={editMode}
               options={[
-                { label: t('time-picker.footer.time-zone-option', 'Time zone'), value: 'tz' },
-                { label: t('time-picker.footer.fiscal-year-option', 'Fiscal year'), value: 'fy' },
+                { label: t('time-picker.footer.time-zone-option', '时区'), value: 'tz' },
+                { label: t('time-picker.footer.fiscal-year-option', '财政年度'), value: 'fy' },
               ]}
               onChange={setEditMode}
             ></RadioButtonGroup>
@@ -112,7 +112,7 @@ export const TimePickerFooter: FC<Props> = (props) => {
             >
               <Field
                 className={style.fiscalYearField}
-                label={t('time-picker.footer.fiscal-year-start', 'Fiscal year start month')}
+                label={t('time-picker.footer.fiscal-year-start', '会计年度开始月份')}
               >
                 <Select
                   value={fiscalYearStartMonth}

@@ -13,7 +13,7 @@ export function QueryPreview({ query }: Props) {
   return (
     <EditorRow>
       <EditorFieldGroup>
-        <EditorField label="Raw query">
+        <EditorField label="原始查询">
           <RawQuery query={query} lang={{ grammar: lokiGrammar, name: 'lokiql' }} />
         </EditorField>
       </EditorFieldGroup>

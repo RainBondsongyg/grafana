@@ -8,7 +8,7 @@ import { QueryBuilderLabelFilter } from '../shared/types';
 
 import { LabelFilterItem } from './LabelFilterItem';
 
-export const MISSING_LABEL_FILTER_ERROR_MESSAGE = 'Select at least 1 label filter (label and value)';
+export const MISSING_LABEL_FILTER_ERROR_MESSAGE = '选择至少一个标签过滤器(标签和值)';
 
 export interface Props {
   labelsFilters: QueryBuilderLabelFilter[];
@@ -52,7 +52,7 @@ export function LabelFilters({
   return (
     <EditorFieldGroup>
       <EditorField
-        label="Label filters"
+        label="标签过滤器"
         error={MISSING_LABEL_FILTER_ERROR_MESSAGE}
         invalid={labelFilterRequired && !hasLabelFilter}
       >

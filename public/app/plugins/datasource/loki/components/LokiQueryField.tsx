@@ -29,12 +29,12 @@ const LAST_USED_LABELS_KEY = 'grafana.datasources.loki.browser.labels';
 
 function getChooserText(hasSyntax: boolean, hasLogLabels: boolean) {
   if (!hasSyntax) {
-    return 'Loading labels...';
+    return '加载标签……';
   }
   if (!hasLogLabels) {
-    return '(No labels found)';
+    return '(没有找到标签)';
   }
-  return 'Label browser';
+  return '标签的浏览器';
 }
 
 function willApplySuggestion(suggestion: string, { typeaheadContext, typeaheadText }: SuggestionsState): string {
@@ -185,7 +185,7 @@ export class LokiQueryField extends React.PureComponent<LokiQueryFieldProps, Lok
       query,
       app,
       datasource,
-      placeholder = 'Enter a Loki query (run with Shift+Enter)',
+      placeholder = '输入Loki查询(按Shift+Enter键运行)',
       history,
       onRunQuery,
       onBlur,

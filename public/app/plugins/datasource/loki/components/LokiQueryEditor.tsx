@@ -120,12 +120,12 @@ export const LokiQueryEditor = React.memo<LokiQueryEditorProps>((props) => {
             });
           }}
         >
-          Kick start your query
+          开始你的查询
         </Button>
-        <QueryHeaderSwitch label="Explain" value={explain} onChange={onExplainChange} />
+        <QueryHeaderSwitch label="解释" value={explain} onChange={onExplainChange} />
         {editorMode === QueryEditorMode.Builder && (
           <>
-            <QueryHeaderSwitch label="Raw query" value={rawQuery} onChange={onQueryPreviewChange} />
+            <QueryHeaderSwitch label="运行查询" value={rawQuery} onChange={onQueryPreviewChange} />
           </>
         )}
         <FlexItem grow={1} />
@@ -137,7 +137,7 @@ export const LokiQueryEditor = React.memo<LokiQueryEditorProps>((props) => {
             icon={data?.state === LoadingState.Loading ? 'fa fa-spinner' : undefined}
             disabled={data?.state === LoadingState.Loading}
           >
-            Run queries
+            运行查询
           </Button>
         )}
         <QueryEditorModeToggle mode={editorMode!} onChange={onEditorModeChange} />

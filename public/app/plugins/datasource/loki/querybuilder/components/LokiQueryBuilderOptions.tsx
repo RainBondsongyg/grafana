@@ -50,10 +50,10 @@ export const LokiQueryBuilderOptions = React.memo<Props>(({ app, query, onChange
 
   return (
     <EditorRow>
-      <QueryOptionGroup title="Options" collapsedInfo={getCollapsedInfo(query, queryType, showMaxLines)}>
+      <QueryOptionGroup title="选项" collapsedInfo={getCollapsedInfo(query, queryType, showMaxLines)}>
         <EditorField
           label="Legend"
-          tooltip="Series name override or template. Ex. {{hostname}} will be replaced with label value for hostname."
+          tooltip="系列名称重写或模板。{{hostname}}将被hostname的标签值替换。"
         >
           <AutoSizeInput
             placeholder="{{label}}"
@@ -64,11 +64,11 @@ export const LokiQueryBuilderOptions = React.memo<Props>(({ app, query, onChange
             onCommitChange={onLegendFormatChanged}
           />
         </EditorField>
-        <EditorField label="Type">
+        <EditorField label="类型">
           <RadioButtonGroup options={queryTypeOptions} value={queryType} onChange={onQueryTypeChange} />
         </EditorField>
         {showMaxLines && (
-          <EditorField label="Line limit" tooltip="Upper limit for number of log lines returned by query.">
+          <EditorField label="行限制" tooltip="查询返回的日志行数的上限。">
             <AutoSizeInput
               className="width-4"
               placeholder="auto"
@@ -79,7 +79,7 @@ export const LokiQueryBuilderOptions = React.memo<Props>(({ app, query, onChange
             />
           </EditorField>
         )}
-        <EditorField label="Resolution">
+        <EditorField label="决议">
           <Select
             isSearchable={false}
             onChange={onResolutionChange}
@@ -104,13 +104,13 @@ function getCollapsedInfo(query: LokiQuery, queryType: LokiQueryType, showMaxLin
   }
 
   if (query.resolution) {
-    items.push(`Resolution: ${resolutionLabel?.label}`);
+    items.push(`决议: ${resolutionLabel?.label}`);
   }
 
-  items.push(`Type: ${queryTypeLabel?.label}`);
+  items.push(`类型: ${queryTypeLabel?.label}`);
 
   if (showMaxLines && query.maxLines) {
-    items.push(`Line limit: ${query.maxLines}`);
+    items.push(`行限制: ${query.maxLines}`);
   }
 
   return items;

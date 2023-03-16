@@ -42,7 +42,7 @@ export function QueryOptions({ query, onQueryTypeChange, app }: Props) {
         <div className={styles.toggle}>
           <Icon name={isOpen ? 'angle-down' : 'angle-right'} />
         </div>
-        <h6 className={styles.title}>Options</h6>
+        <h6 className={styles.title}>选项</h6>
         {!isOpen && (
           <div className={styles.description}>
             <span>Type: {query.queryType}</span>

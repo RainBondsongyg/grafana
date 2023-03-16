@@ -71,7 +71,7 @@ export const OperationHeader = React.memo<Props>(
             <Select
               autoFocus
               openMenuOnFocus
-              placeholder="Replace with"
+              placeholder="替换为"
               options={state.alternatives}
               isOpen={true}
               onCloseMenu={onToggleSwitcher}

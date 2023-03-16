@@ -86,7 +86,7 @@ export const TimePickerContentWithScreenSize: React.FC<PropsWithScreenSize> = (p
                 autoFocus={true}
                 value={searchTerm}
                 onChange={setSearchQuery}
-                placeholder={t('time-picker.content.filter-placeholder', 'Search quick ranges')}
+                placeholder={t('time-picker.content.filter-placeholder', '快速搜索范围')}
               />
             </div>
             <CustomScrollbar>
@@ -150,7 +150,7 @@ const NarrowScreenForm = (props: FormProps) => {
           aria-controls="expanded-timerange"
         >
           <TimePickerTitle>
-            <Trans i18nKey="time-picker.absolute.title">Absolute time range</Trans>
+            <Trans i18nKey="time-picker.absolute.title">绝对时间范围</Trans>
           </TimePickerTitle>
           {!hideQuickRanges && <Icon name={!collapsed ? 'angle-up' : 'angle-down'} />}
         </button>
@@ -188,7 +188,7 @@ const FullScreenForm: React.FC<FormProps> = (props) => {
       <div className={styles.container}>
         <div className={styles.title} data-testid={selectors.components.TimePicker.absoluteTimeRangeTitle}>
           <TimePickerTitle>
-            <Trans i18nKey="time-picker.absolute.title">Absolute time range</Trans>
+            <Trans i18nKey="time-picker.absolute.title">绝对时间范围</Trans>
           </TimePickerTitle>
         </div>
         <TimeRangeContent
@@ -223,8 +223,10 @@ const EmptyRecentList = memo(() => {
       <Trans i18nKey="time-picker.content.empty-recent-list">
         <div>
           <span>
-            It looks like you haven&apos;t used this time picker before. As soon as you enter some time intervals,
-            recently used intervals will appear here.
+            {/* It looks like you haven&apos;t used this time picker before. As soon as you enter some time intervals,
+            recently used intervals will appear here. */}
+            看起来你以前没有使用过这个时间选择器。只要你进入一段时间间隔，
+              最近使用的间隔将出现在这里。
           </span>
         </div>
         <div>
@@ -233,9 +235,9 @@ const EmptyRecentList = memo(() => {
             href="https://grafana.com/docs/grafana/latest/dashboards/time-range-controls"
             target="_new"
           >
-            Read the documentation
+            阅读文档
           </a>
-          <span> to find out more about how to enter custom time ranges.</span>
+          <span> 以了解有关如何输入自定义时间范围的详细信息。</span>
         </div>
       </Trans>
     </div>

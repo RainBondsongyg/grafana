@@ -123,11 +123,11 @@ export function OperationList<T extends QueryWithOperations>({
               autoFocus={true}
               alwaysOpen={true}
               hideActiveLevelLabel={true}
-              placeholder={'Search'}
+              placeholder={"搜索"}
             />
           ) : (
             <Button icon={'plus'} variant={'secondary'} onClick={() => setCascaderOpen(true)} title={'Add operation'}>
-              Operations
+              操作
             </Button>
           )}
         </div>

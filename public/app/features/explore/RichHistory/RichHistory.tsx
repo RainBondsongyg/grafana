@@ -112,7 +112,7 @@ class UnThemedRichHistory extends PureComponent<RichHistoryProps> {
     const { loading } = this.state;
 
     const QueriesTab: TabConfig = {
-      label: 'Query history',
+      label: '查询历史',
       value: Tabs.RichHistory,
       content: (
         <RichHistoryQueriesTab
@@ -133,7 +133,7 @@ class UnThemedRichHistory extends PureComponent<RichHistoryProps> {
     };
 
     const StarredTab: TabConfig = {
-      label: 'Starred',
+      label: '标记',
       value: Tabs.Starred,
       content: (
         <RichHistoryStarredTab
@@ -153,7 +153,7 @@ class UnThemedRichHistory extends PureComponent<RichHistoryProps> {
     };
 
     const SettingsTab: TabConfig = {
-      label: 'Settings',
+      label: '设置',
       value: Tabs.Settings,
       content: (
         <RichHistorySettingsTab

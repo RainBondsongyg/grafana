@@ -13,26 +13,26 @@ const EXAMPLES_LIMIT = 5;
 
 const LOGQL_EXAMPLES = [
   {
-    title: 'Log pipeline',
+    title: '日志流水线',
     expression: '{job="mysql"} |= "metrics" | logfmt | duration > 10s',
     label:
-      'This query targets the MySQL job, keeps logs that contain the substring "metrics", and then parses and filters the logs further.',
+      '这个查询以MySQL作业为目标，保存包含子字符串“metrics”的日志，然后进一步解析和过滤日志。',
   },
   {
-    title: 'Count over time',
+    title: '随着时间计数',
     expression: 'count_over_time({job="mysql"}[5m])',
-    label: 'This query counts all the log lines within the last five minutes for the MySQL job.',
+    label: '该查询将统计MySQL作业在最近5分钟内的所有日志行。',
   },
   {
-    title: 'Rate',
+    title: '率',
     expression: 'rate(({job="mysql"} |= "error" != "timeout")[10s])',
     label:
-      'This query gets the per-second rate of all non-timeout errors within the last ten seconds for the MySQL job.',
+      '此查询获取MySQL作业在最近10秒内所有非超时错误的每秒发生率。',
   },
   {
-    title: 'Aggregate, count, and group',
+    title: '聚合、计数和分组',
     expression: 'sum(count_over_time({job="mysql"}[5m])) by (level)',
-    label: 'Get the count of logs during the last five minutes, grouping by level.',
+    label: '获取最近五分钟内的日志计数，按级别分组。',
   },
 ];
 
@@ -93,12 +93,12 @@ export default class LokiCheatSheet extends PureComponent<QueryEditorHelpProps<L
 
     return (
       <div>
-        <h2>Loki Cheat Sheet</h2>
+        <h2>Loki 备忘单</h2>
         <div className="cheat-sheet-item">
-          <div className="cheat-sheet-item__title">See your logs</div>
+          <div className="cheat-sheet-item__title">查看日志</div>
           <div className="cheat-sheet-item__label">
-            Start by selecting a log stream from the Label browser, or alternatively you can write a stream selector
-            into the query field.
+          首先从Label浏览器中选择一个日志流，或者您也可以编写一个流选择器
+          进入查询字段。
           </div>
           {hasUserExamples ? (
             <div>
@@ -113,13 +113,13 @@ export default class LokiCheatSheet extends PureComponent<QueryEditorHelpProps<L
           )}
         </div>
         <div className="cheat-sheet-item">
-          <div className="cheat-sheet-item__title">Combine stream selectors</div>
+          <div className="cheat-sheet-item__title">组合流选择器</div>
           {this.renderExpression('{app="cassandra",namespace="prod"}')}
-          <div className="cheat-sheet-item__label">Returns all log lines from streams that have both labels.</div>
+          <div className="cheat-sheet-item__label">从具有两个标签的流中返回所有日志行。</div>
         </div>
 
         <div className="cheat-sheet-item">
-          <div className="cheat-sheet-item__title">Filtering for search terms.</div>
+          <div className="cheat-sheet-item__title">过滤搜索词</div>
           {this.renderExpression('{app="cassandra"} |~ "(duration|latency)s*(=|is|of)s*[d.]+"')}
           {this.renderExpression('{app="cassandra"} |= "exact match"')}
           {this.renderExpression('{app="cassandra"} != "do not match"')}
@@ -127,7 +127,7 @@ export default class LokiCheatSheet extends PureComponent<QueryEditorHelpProps<L
             <a href="https://grafana.com/docs/loki/latest/logql/#log-pipeline" target="logql">
               LogQL
             </a>{' '}
-            supports exact and regular expression filters.
+            支持精确和正则表达式筛选器。
           </div>
         </div>
         {LOGQL_EXAMPLES.map((item) => (

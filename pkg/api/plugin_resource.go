@@ -249,7 +249,7 @@ func handleCallResourceError(err error, reqCtx *models.ReqContext) {
 		return
 	}
 
-	reqCtx.JsonApiErr(500, "Failed to call resource", err)
+	reqCtx.JsonApiErr(500, "加载选项失败", err)
 }
 
 // callResourceClientResponseStream is used for receiving resource call responses.

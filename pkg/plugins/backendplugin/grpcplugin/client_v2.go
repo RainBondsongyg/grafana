@@ -179,7 +179,7 @@ func (c *ClientV2) CallResource(ctx context.Context, req *backend.CallResourceRe
 			return backendplugin.ErrMethodNotImplemented
 		}
 
-		return fmt.Errorf("%v: %w", "Failed to call resource", err)
+		return fmt.Errorf("%v: %w", "加载选项失败", err)
 	}
 
 	for {
@@ -235,7 +235,7 @@ func (c *ClientV2) RunStream(ctx context.Context, req *backend.RunStreamRequest,
 		if status.Code(err) == codes.Unimplemented {
 			return backendplugin.ErrMethodNotImplemented
 		}
-		return fmt.Errorf("%v: %w", "Failed to call resource", err)
+		return fmt.Errorf("%v: %w", "加载选项失败", err)
 	}
 
 	for {

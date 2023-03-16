@@ -95,11 +95,11 @@ export function getOperationDefinitions(): QueryBuilderOperationDef[] {
       renderer: (model, def, innerExpr) => `${innerExpr} | json ${model.params.join(', ')}`.trim(),
       addOperationHandler: addLokiOperation,
       explainHandler: () =>
-        `This will extract keys and values from a [json](https://grafana.com/docs/loki/latest/logql/log_queries/#json) formatted log line as labels. The extracted labels can be used in label filter expressions and used as values for a range aggregation via the unwrap operation.`,
+        `这将从[json](https://grafana.com/docs/loki/latest/logql/log_queries/#json)格式的日志行中提取键和值作为标签。提取的标签可用于标签筛选器表达式，并通过展开操作用作范围聚合的值。`,
     },
     {
       id: LokiOperationId.Logfmt,
-      name: 'Logfmt',
+      name: '日志格式',
       params: [],
       defaultParams: [],
       alternativesKey: 'format',
@@ -108,11 +108,11 @@ export function getOperationDefinitions(): QueryBuilderOperationDef[] {
       renderer: pipelineRenderer,
       addOperationHandler: addLokiOperation,
       explainHandler: () =>
-        `This will extract all keys and values from a [logfmt](https://grafana.com/docs/loki/latest/logql/log_queries/#logfmt) formatted log line as labels. The extracted labels can be used in label filter expressions and used as values for a range aggregation via the unwrap operation.`,
+        `这将从[logfmt](https://grafana.com/docs/loki/latest/logql/log_queries/#logfmt)格式的日志行中提取所有键和值作为标签。提取的标签可用于标签筛选器表达式，并通过展开操作用作范围聚合的值。`,
     },
     {
       id: LokiOperationId.Regexp,
-      name: 'Regexp',
+      name: '正则表达式',
       params: [
         {
           name: 'String',
@@ -130,11 +130,11 @@ export function getOperationDefinitions(): QueryBuilderOperationDef[] {
       renderer: (model, def, innerExpr) => `${innerExpr} | regexp \`${model.params[0]}\``,
       addOperationHandler: addLokiOperation,
       explainHandler: () =>
-        `The [regexp parser](https://grafana.com/docs/loki/latest/logql/log_queries/#regular-expression) takes a single parameter | regexp "<re>" which is the regular expression using the Golang RE2 syntax. The regular expression must contain a least one named sub-match (e.g (?P<name>re)), each sub-match will extract a different label. The expression matches the structure of a log line. The extracted labels can be used in label filter expressions and used as values for a range aggregation via the unwrap operation.`,
+        `[regexp解析器](https://grafana.com/docs/loki/latest/logql/log_queries/#regular-expression)接受一个参数| regexp "<re>"，这是使用Golang RE2语法的正则表达式。正则表达式必须包含至少一个命名子匹配(例如(?P<name>re))，每个子匹配将提取一个不同的标签。表达式匹配日志行的结构。提取的标签可用于标签筛选器表达式，并通过展开操作用作范围聚合的值。`,
     },
     {
       id: LokiOperationId.Pattern,
-      name: 'Pattern',
+      name: '模式',
       params: [
         {
           name: 'String',
@@ -152,11 +152,11 @@ export function getOperationDefinitions(): QueryBuilderOperationDef[] {
       renderer: (model, def, innerExpr) => `${innerExpr} | pattern \`${model.params[0]}\``,
       addOperationHandler: addLokiOperation,
       explainHandler: () =>
-        `The [pattern parser](https://grafana.com/docs/loki/latest/logql/log_queries/#pattern) allows the explicit extraction of fields from log lines by defining a pattern expression (| pattern \`<pattern-expression>\`). The expression matches the structure of a log line. The extracted labels can be used in label filter expressions and used as values for a range aggregation via the unwrap operation.`,
+        `[模式解析器](https://grafana.com/docs/loki/latest/logql/log_queries/#pattern)允许通过定义一个模式表达式(| pattern \ ' <pattern-expression>\ ')显式地从日志行中提取字段。表达式匹配日志行的结构。提取的标签可用于标签筛选器表达式，并通过展开操作用作范围聚合的值。`,
     },
     {
       id: LokiOperationId.Unpack,
-      name: 'Unpack',
+      name: '解压缩',
       params: [],
       defaultParams: [],
       alternativesKey: 'format',
@@ -165,11 +165,11 @@ export function getOperationDefinitions(): QueryBuilderOperationDef[] {
       renderer: pipelineRenderer,
       addOperationHandler: addLokiOperation,
       explainHandler: () =>
-        `This will extract all keys and values from a JSON log line, [unpacking](https://grafana.com/docs/loki/latest/logql/log_queries/#unpack) all embedded labels in the pack stage. The extracted labels can be used in label filter expressions and used as values for a range aggregation via the unwrap operation.`,
+        `这将从JSON日志行中提取所有键和值，[unpacking](https://grafana.com/docs/loki/latest/logql/log_queries/#unpack)打包阶段的所有嵌入标签。提取的标签可用于标签筛选器表达式，并通过展开操作用作范围聚合的值。`,
     },
     {
       id: LokiOperationId.LineFormat,
-      name: 'Line format',
+      name: '行格式',
       params: [
         {
           name: 'String',
@@ -187,16 +187,16 @@ export function getOperationDefinitions(): QueryBuilderOperationDef[] {
       renderer: (model, def, innerExpr) => `${innerExpr} | line_format \`${model.params[0]}\``,
       addOperationHandler: addLokiOperation,
       explainHandler: () =>
-        `This will replace log line using a specified template. The template can refer to stream labels and extracted labels.
+        `这将使用指定的模板替换日志行。模板可以引用流标签和提取的标签。
 
-Example: \`{{.status_code}} - {{.message}}\`
-
-[Read the docs](https://grafana.com/docs/loki/latest/logql/log_queries/#line-format-expression) for more.
+        例如:{{\”。Status_code}} - {{.message}}\ '
+        
+        [阅读文档](https://grafana.com/docs/loki/latest/logql/log_queries/#line-format-expression)了解更多。
         `,
     },
     {
       id: LokiOperationId.LabelFormat,
-      name: 'Label format',
+      name: '标签格式',
       params: [
         { name: 'Label', type: 'string' },
         { name: 'Rename to', type: 'string' },
@@ -208,23 +208,23 @@ Example: \`{{.status_code}} - {{.message}}\`
       renderer: (model, def, innerExpr) => `${innerExpr} | label_format ${model.params[1]}=${model.params[0]}`,
       addOperationHandler: addLokiOperation,
       explainHandler: () =>
-        `This will change name of label to desired new label. In the example below, label "error_level" will be renamed to "level".
+        `这将改变标签的名称为所需的新标签。在下面的例子中，标签"error_level"将被重命名为"level"。
 
-Example: \`\`error_level=\`level\` \`\`
-
-[Read the docs](https://grafana.com/docs/loki/latest/logql/log_queries/#labels-format-expression) for more.
+        示例:\ ' \ ' error_level=\ ' level\ ' \ ' \ '
+        
+        [阅读文档](https://grafana.com/docs/loki/latest/logql/log_queries/#labels-format-expression)了解更多。
         `,
     },
 
     {
       id: LokiOperationId.LineContains,
-      name: 'Line contains',
+      name: '行包含',
       params: [
         {
           name: 'String',
           type: 'string',
           hideName: true,
-          placeholder: 'Text to find',
+          placeholder: '要查找的文本',
           description: 'Find log lines that contains this text',
           minWidth: 20,
           runQueryOnEnter: true,
@@ -236,17 +236,17 @@ Example: \`\`error_level=\`level\` \`\`
       orderRank: LokiOperationOrder.LineFilters,
       renderer: getLineFilterRenderer('|='),
       addOperationHandler: addLokiOperation,
-      explainHandler: (op) => `Return log lines that contain string \`${op.params[0]}\`.`,
+      explainHandler: (op) => `返回包含字符串的日志行 \`${op.params[0]}\`.`,
     },
     {
       id: LokiOperationId.LineContainsNot,
-      name: 'Line does not contain',
+      name: '行不包含',
       params: [
         {
           name: 'String',
           type: 'string',
           hideName: true,
-          placeholder: 'Text to exclude',
+          placeholder: '要排除的文本',
           description: 'Find log lines that does not contain this text',
           minWidth: 26,
           runQueryOnEnter: true,
@@ -258,17 +258,17 @@ Example: \`\`error_level=\`level\` \`\`
       orderRank: LokiOperationOrder.LineFilters,
       renderer: getLineFilterRenderer('!='),
       addOperationHandler: addLokiOperation,
-      explainHandler: (op) => `Return log lines that does not contain string \`${op.params[0]}\`.`,
+      explainHandler: (op) => `返回不包含字符串的日志行\`${op.params[0]}\`.`,
     },
     {
       id: LokiOperationId.LineContainsCaseInsensitive,
-      name: 'Line contains case insensitive',
+      name: '行包含不区分大小写',
       params: [
         {
           name: 'String',
           type: 'string',
           hideName: true,
-          placeholder: 'Text to find',
+          placeholder: '要查找的文本',
           description: 'Find log lines that contains this text',
           minWidth: 33,
           runQueryOnEnter: true,
@@ -280,17 +280,17 @@ Example: \`\`error_level=\`level\` \`\`
       orderRank: LokiOperationOrder.LineFilters,
       renderer: getLineFilterRenderer('|~', true),
       addOperationHandler: addLokiOperation,
-      explainHandler: (op) => `Return log lines that match regex \`(?i)${op.params[0]}\`.`,
+      explainHandler: (op) => `返回匹配正则表达式的日志行 \`(?i)${op.params[0]}\`.`,
     },
     {
       id: LokiOperationId.LineContainsNotCaseInsensitive,
-      name: 'Line does not contain case insensitive',
+      name: '行不包含不区分大小写的内容',
       params: [
         {
           name: 'String',
           type: 'string',
           hideName: true,
-          placeholder: 'Text to exclude',
+          placeholder: '要排除的文本',
           description: 'Find log lines that does not contain this text',
           minWidth: 40,
           runQueryOnEnter: true,
@@ -302,17 +302,17 @@ Example: \`\`error_level=\`level\` \`\`
       orderRank: LokiOperationOrder.LineFilters,
       renderer: getLineFilterRenderer('!~', true),
       addOperationHandler: addLokiOperation,
-      explainHandler: (op) => `Return log lines that does not match regex \`(?i)${op.params[0]}\`.`,
+      explainHandler: (op) => `返回与正则表达式不匹配的日志行 \`(?i)${op.params[0]}\`.`,
     },
     {
       id: LokiOperationId.LineMatchesRegex,
-      name: 'Line contains regex match',
+      name: '行包含正则表达式匹配',
       params: [
         {
           name: 'Regex',
           type: 'string',
           hideName: true,
-          placeholder: 'Pattern to match',
+          placeholder: '要匹配的模式',
           description: 'Find log lines that match this regex pattern',
           minWidth: 30,
           runQueryOnEnter: true,
@@ -324,17 +324,17 @@ Example: \`\`error_level=\`level\` \`\`
       orderRank: LokiOperationOrder.LineFilters,
       renderer: getLineFilterRenderer('|~'),
       addOperationHandler: addLokiOperation,
-      explainHandler: (op) => `Return log lines that match regex \`${op.params[0]}\`.`,
+      explainHandler: (op) => `返回匹配正则表达式的日志行 \`${op.params[0]}\`.`,
     },
     {
       id: LokiOperationId.LineMatchesRegexNot,
-      name: 'Line does not match regex',
+      name: '行不匹配正则表达式',
       params: [
         {
           name: 'Regex',
           type: 'string',
           hideName: true,
-          placeholder: 'Pattern to exclude',
+          placeholder: '要排除的模式',
           description: 'Find log lines that does not match this regex pattern',
           minWidth: 30,
           runQueryOnEnter: true,
@@ -346,17 +346,17 @@ Example: \`\`error_level=\`level\` \`\`
       orderRank: LokiOperationOrder.LineFilters,
       renderer: getLineFilterRenderer('!~'),
       addOperationHandler: addLokiOperation,
-      explainHandler: (op) => `Return log lines that does not match regex \`${op.params[0]}\`.`,
+      explainHandler: (op) => `返回与正则表达式不匹配的日志行 \`${op.params[0]}\`.`,
     },
     {
       id: LokiOperationId.LineFilterIpMatches,
-      name: 'IP line filter expression',
+      name: 'IP线滤波器表达式',
       params: [
-        { name: 'Operator', type: 'string', options: ['|=', '!='] },
+        { name: '操作符', type: 'string', options: ['|=', '!='] },
         {
-          name: 'Pattern',
+          name: '模式',
           type: 'string',
-          placeholder: '<pattern>',
+          placeholder: '<模式>',
           minWidth: 16,
           runQueryOnEnter: true,
         },
@@ -367,11 +367,11 @@ Example: \`\`error_level=\`level\` \`\`
       orderRank: LokiOperationOrder.LineFilters,
       renderer: (op, def, innerExpr) => `${innerExpr} ${op.params[0]} ip(\`${op.params[1]}\`)`,
       addOperationHandler: addLokiOperation,
-      explainHandler: (op) => `Return log lines using IP matching of \`${op.params[1]}\``,
+      explainHandler: (op) => `IP匹配返回日志行\`${op.params[1]}\``,
     },
     {
       id: LokiOperationId.LabelFilter,
-      name: 'Label filter expression',
+      name: '标签过滤器表达式',
       params: [
         { name: 'Label', type: 'string' },
         { name: 'Operator', type: 'string', options: ['=', '!=', ' =~', '!~', '>', '<', '>=', '<='] },
@@ -383,11 +383,11 @@ Example: \`\`error_level=\`level\` \`\`
       orderRank: LokiOperationOrder.LabelFilters,
       renderer: labelFilterRenderer,
       addOperationHandler: addLokiOperation,
-      explainHandler: () => `Label expression filter allows filtering using original and extracted labels.`,
+      explainHandler: () => `标签表达式过滤器允许使用原始标签和提取的标签进行过滤。`,
     },
     {
       id: LokiOperationId.LabelFilterIpMatches,
-      name: 'IP label filter expression',
+      name: 'IP标签滤波器表达式',
       params: [
         { name: 'Label', type: 'string' },
         { name: 'Operator', type: 'string', options: ['=', '!='] },
@@ -400,11 +400,11 @@ Example: \`\`error_level=\`level\` \`\`
       renderer: (model, def, innerExpr) =>
         `${innerExpr} | ${model.params[0]} ${model.params[1]} ip(\`${model.params[2]}\`)`,
       addOperationHandler: addLokiOperation,
-      explainHandler: (op) => `Return log lines using IP matching of \`${op.params[2]}\` for \`${op.params[0]}\` label`,
+      explainHandler: (op) => `IP匹配返回日志行\`${op.params[2]}\` for \`${op.params[0]}\` 标签`,
     },
     {
       id: LokiOperationId.LabelFilterNoErrors,
-      name: 'No pipeline errors',
+      name: '无管道错误',
       params: [],
       defaultParams: [],
       alternativesKey: 'label filter',
@@ -412,11 +412,11 @@ Example: \`\`error_level=\`level\` \`\`
       orderRank: LokiOperationOrder.NoErrors,
       renderer: (model, def, innerExpr) => `${innerExpr} | __error__=\`\``,
       addOperationHandler: addLokiOperation,
-      explainHandler: () => `Filter out all formatting and parsing errors.`,
+      explainHandler: () => `过滤掉所有格式化和解析错误。`,
     },
     {
       id: LokiOperationId.Unwrap,
-      name: 'Unwrap',
+      name: '打开',
       params: [
         {
           name: 'Identifier',
@@ -443,9 +443,9 @@ Example: \`\`error_level=\`level\` \`\`
       addOperationHandler: addLokiOperation,
       explainHandler: (op) => {
         let label = String(op.params[0]).length > 0 ? op.params[0] : '<label>';
-        return `Use the extracted label \`${label}\` as sample values instead of log lines for the subsequent range aggregation.${
+        return `使用提取的标签\ ' ${label}\ '作为示例值，而不是后续范围聚合的日志行。${
           op.params[1]
-            ? ` Conversion function \`${op.params[1]}\` wrapping \`${label}\` will attempt to convert this label from a specific format (e.g. 3k, 500ms).`
+            ? ` 转换函数 \`${op.params[1]}\` 包装 \`${label}\` 将尝试将该标签从特定格式(例如3k, 500ms)转换.`
             : ''
         }`;
       },

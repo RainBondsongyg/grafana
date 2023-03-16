@@ -41,8 +41,8 @@ interface InputState {
 }
 
 const ERROR_MESSAGES = {
-  default: () => t('time-picker.range-content.default-error', 'Please enter a past date or "now"'),
-  range: () => t('time-picker.range-content.range-error', '"From" can\'t be after "To"'),
+  default: () => t('time-picker.range-content.default-error', '请输入过去的日期或“现在”'),
+  range: () => t('time-picker.range-content.range-error', '“从”不能跟在“至”后面'),
 };
 
 export const TimeRangeContent = (props: Props) => {
@@ -124,7 +124,7 @@ export const TimeRangeContent = (props: Props) => {
     <div>
       <div className={style.fieldContainer}>
         <Field
-          label={t('time-picker.range-content.from-input', 'From')}
+          label={t('time-picker.range-content.from-input', '从')}
           invalid={from.invalid}
           error={from.errorMessage}
         >
@@ -140,7 +140,7 @@ export const TimeRangeContent = (props: Props) => {
         {fyTooltip}
       </div>
       <div className={style.fieldContainer}>
-        <Field label={t('time-picker.range-content.to-input', 'To')} invalid={to.invalid} error={to.errorMessage}>
+        <Field label={t('time-picker.range-content.to-input', '至')} invalid={to.invalid} error={to.errorMessage}>
           <Input
             onClick={(event) => event.stopPropagation()}
             onChange={(event) => onChange(from.value, event.currentTarget.value)}
@@ -153,7 +153,7 @@ export const TimeRangeContent = (props: Props) => {
         {fyTooltip}
       </div>
       <Button data-testid={selectors.components.TimePicker.applyTimeRange} type="button" onClick={onApply}>
-        <Trans i18nKey="time-picker.range-content.apply-button">Apply time range</Trans>
+        <Trans i18nKey="time-picker.range-content.apply-button">应用时间段</Trans>
       </Button>
 
       <TimePickerCalendar
