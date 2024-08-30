@@ -1,0 +1,23 @@
+app: grafana
+env: allowing-wood
+namespace: default
+chart:
+  repository: https://chart.onechart.dev
+  name: onechart
+  version: 0.70.0
+values:
+  gitRepository: RainBondsongyg/grafana
+  gitSha: '{{ .SHA }}'
+  image:
+    registry: dockerRegistry
+    repository: 127.0.0.1:32447/{{ .APP }}
+    strategy: buildpacks
+    tag: '{{ .SHA }}'
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
+      kubernetes.io/ingress.class: nginx
+    host: rainbondsongyg-grafana-oqoliqbc.gimlet.app
+    tlsEnabled: true
+  resources:
+    ignoreLimits: true
